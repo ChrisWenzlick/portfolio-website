@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-brand: var(--color-primary-500);
+  --color-brand-light: var(--color-primary-200);
+  --color-brand-dark: var(--color-primary-700);
+  --color-bg-light: var(--color-grey-100);
+  --color-bg-dark: var(--color-grey-700);
+  --color-text-light: var(--color-grey-900);
+  --color-text-dark: var(--color-grey-100);
+  --color-accent: var(--color-accent-500);
+  --color-accent-hover: var(--color-accent-600);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+
+
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+
+  /* Primary Colors */
+  --color-primary-900: #0E2519;
+  --color-primary-800: #173628;
+  --color-primary-700: #1D4934;
+  --color-primary-600: #3B9165;
+  --color-primary-500: #52B788;
+  --color-primary-400: #61B892;
+  --color-primary-300: #75BD9E;
+  --color-primary-200: #8BC1AA;
+  --color-primary-100: #9FC6B5;
+
+  /* Neutral Colors */
+  --color-grey-900: #0C0D0C;
+  --color-grey-800: #161817;
+  --color-grey-700: #242827;
+  --color-grey-600: #303634;
+  --color-grey-500: #49504E;
+  --color-grey-400: #616B69;
+  --color-grey-300: #798682;
+  --color-grey-200: #949E9B;
+  --color-grey-100: #C9CFCC;
+
+  /* Accent Colors */
+  --color-accent-900: #250E1A;
+  --color-accent-800: #361725;
+  --color-accent-700: #491D32;
+  --color-accent-600: #913B67;
+  --color-accent-500: #B75281;
+  --color-accent-400: #B86187;
+  --color-accent-300: #BD7594;
+  --color-accent-200: #C18BA2;
+  --color-accent-100: #C69FB0;
+
+  /* Danger Colors */
+  --color-danger-900: #330003;
+  --color-danger-800: #4B0302;
+  --color-danger-700: #7E0402;
+  --color-danger-600: #A70402;
+  --color-danger-500: #CD0402;
+  --color-danger-400: #E61D19;
+  --color-danger-300: #E05452;
+  --color-danger-200: #E08785;
+  --color-danger-100: #E6B7B3;
+
+  /* Warning Colors */
+  --color-warning-900: #332600;
+  --color-warning-800: #4A3803;
+  --color-warning-700: #916D03;
+  --color-warning-600: #CC9900;
+  --color-warning-500: #F2B705;
+  --color-warning-400: #F2C336;
+  --color-warning-300: #F1CA55;
+  --color-warning-200: #F1D993;
+  --color-warning-100: #F4E6BE;
+
+  /* Success Colors */
+  --color-success-900: #051702;
+  --color-success-800: #092F04;
+  --color-success-700: #0F4607;
+  --color-success-600: #197A06;
+  --color-success-500: #29C20A;
+  --color-success-400: #35F00F;
+  --color-success-300: #60EF43;
+  --color-success-200: #8AF075;
+  --color-success-100: #B1F4A4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    scroll-behavior: smooth;
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+  }
+
+  /* Dark Mode Overrides */
+  html.dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
+
+  a {
+    @apply text-brand hover:text-brand-dark transition-colors;
+  }
+
+  img {
+    @apply max-w-full h-auto;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  /* Navigation */
+  .navbar {
+    @apply flex justify-between items-center p-4 bg-brand-dark shadow-sm;
+  }
+
+  .nav-links {
+    @apply flex gap-6 text-sm font-medium;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold transition-all;
+    @apply bg-[--color-accent] text-black hover:bg-[--color-accent-hover];
+  }
+
+  /* Card */
+  .card {
+    @apply p-6 rounded-2xl shadow-md transition hover:shadow-lg;
+    @apply bg-white dark:bg-slate-800;
+  }
+
+  .card-content {
+
+  }
+
+  /* Section Wrapper */
+  .section {
+    @apply py-16 px-6 md:px-12 max-w-6xl mx-auto;
+  }
+
+  /* Headings */
+  .heading {
+    @apply text-3xl font-bold mb-4;
+  }
+
+  .subheading {
+    @apply text-lg text-grey-600 dark:text-grey-300;
+  }
+  
+  /* Grid Container */
+  .grid-cards {
+    @apply grid gap-6 sm:grid-cols-2 lg:grid-cols-3;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .shadow-brand {
+    box-shadow: 0 4px 6px -1px rgb(37 99 235 / 0.2);
+  }
 }
