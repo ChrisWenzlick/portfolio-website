@@ -1,21 +1,16 @@
-import Link from 'next/link'
+import ProjectCard from '../../components/ProjectCard';
+import SiteHeader from '../../components/SiteHeader';
+import Hero from '../../components/Hero';
+import ThemeToggle from '../../components/ThemeToggle';
 
 export default function Home() {
     return (
       <main>
-        {/* Header */}
-        <header className="navbar">
-          <Link href="/" className="text-xl font-bold text-brand">CW</Link>
-          <nav className="nav-links">
-            <a href="#projects">Projects</a>
-            <a href="#skills">Skills</a>
-            <a href="#testimonials">Testimonials</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </header>
-  
-        {/* Hero Section */}
-        <section className="section text-center bg-brand text-white">
+        <SiteHeader />
+
+        <ThemeToggle />
+        
+        <Hero className='section my-[var(--navbar-height)]'>
           <div className="max-w-3xl mx-auto space-y-6">
             <h1 className="text-5xl font-bold">Hi, I’m Christopher Wenzlick</h1>
             <p className="text-lg text-balance">
@@ -23,7 +18,7 @@ export default function Home() {
             </p>
             <button className="btn">View My Work</button>
           </div>
-        </section>
+        </Hero>
   
         {/* Featured Projects */}
         <section id="projects" className="section">

@@ -1,23 +1,19 @@
 @import "tailwindcss";
 
-@theme {
-  --color-brand: var(--color-primary-500);
-  --color-brand-light: var(--color-primary-200);
-  --color-brand-dark: var(--color-primary-700);
-  --color-bg-light: var(--color-grey-100);
-  --color-bg-dark: var(--color-grey-700);
-  --color-text-light: var(--color-grey-900);
-  --color-text-dark: var(--color-grey-100);
-  --color-accent: var(--color-accent-500);
-  --color-accent-hover: var(--color-accent-600);
+@custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
   /* Typography */
   --font-sans: 'Inter', system-ui, sans-serif;
   --font-heading: 'Poppins', sans-serif;
 
-
+  /* Sizing and Formatting */
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
+  --navbar-height: 50px;
+
+
+
 
   /* Primary Colors */
   --color-primary-900: #0E2519;
@@ -31,15 +27,15 @@
   --color-primary-100: #9FC6B5;
 
   /* Neutral Colors */
-  --color-grey-900: #0C0D0C;
-  --color-grey-800: #161817;
-  --color-grey-700: #242827;
-  --color-grey-600: #303634;
-  --color-grey-500: #49504E;
-  --color-grey-400: #616B69;
-  --color-grey-300: #798682;
-  --color-grey-200: #949E9B;
-  --color-grey-100: #C9CFCC;
+  --color-neutral-900: #0C0D0C;
+  --color-neutral-800: #161817;
+  --color-neutral-700: #242827;
+  --color-neutral-600: #303634;
+  --color-neutral-500: #49504E;
+  --color-neutral-400: #616B69;
+  --color-neutral-300: #798682;
+  --color-neutral-200: #949E9B;
+  --color-neutral-100: #C9CFCC;
 
   /* Accent Colors */
   --color-accent-900: #250E1A;
@@ -87,25 +83,55 @@
 }
 
 @layer base {
+  :root {
+    /* Light Theme */
+    --color-bg: var(--color-neutral-100);
+    --color-surface: var(--color-neutral-200);
+    --color-border: var(--color-neutral-300);
+
+    --color-text: var(--color-neutral-900);
+    --color-text-muted: var(--color-neutral-600);
+
+    --color-primary: var(--color-primary-500);
+    --color-primary-contrast: var(--color-primary-700);
+    --color-primary-text: var(--color-neutral-100);
+
+    --color-accent: var(--color-primary-400);
+    --color-success: var(--color-success-500);
+    --color-danger: var(--color-danger-500);
+  }
+
+  .dark {
+    /* Dark Theme Overrides */
+    --color-bg: var(--color-neutral-700);
+    --color-surface: var(--color-neutral-600);
+    --color-border: var(--color-neutral-500);
+
+    --color-text: var(--color-neutral-100);
+    --color-text-muted: var(--color-neutral-300);
+
+    --color-primary: var(--color-primary-700);
+    --color-primary-contrast: var(--color-primary-200);
+    --color-primary-text: var(--color-neutral-100);
+
+    --color-accent: var(--color-primary-200);
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-sans);;
+  }
+
   html {
-    font-family: var(--font-sans);
-    background-color: var(--color-bg-light);
-    color: var(--color-text-light);
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-900);
     scroll-behavior: smooth;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
-  }
-
-  /* Dark Mode Overrides */
-  html.dark {
-    background-color: var(--color-bg-dark);
-    color: var(--color-text-dark);
-  }
-
-  a {
-    @apply text-brand hover:text-brand-dark transition-colors;
   }
 
   img {
@@ -114,13 +140,20 @@
 }
 
 @layer components {
-  /* Navigation */
-  .navbar {
-    @apply flex justify-between items-center p-4 bg-brand-dark shadow-sm;
+  /* Header */
+  header {
+    @apply bg-[var(--color-primary)] text-[var(--color-primary-contrast)]
   }
 
-  .nav-links {
-    @apply flex gap-6 text-sm font-medium;
+  /* Nav */
+  nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-lg);
+    height: 100%;
+    cursor: pointer;
+    @apply px-4 text-sm transition-colors hover:bg-[var(--color-primary-contrast)] hover:text-[var(--color-primary)]
   }
 
   /* Buttons */
