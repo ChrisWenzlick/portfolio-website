@@ -10,7 +10,7 @@ export default function Home() {
 
         <ThemeToggle />
         
-        <Hero className='section my-[var(--navbar-height)]'>
+        <Hero className='section my-[var(--navbar-height)]' imageUrl='/desk.jpg'>
           <div className="max-w-3xl mx-auto space-y-6">
             <h1 className="text-5xl font-bold">Hi, I’m Christopher Wenzlick</h1>
             <p className="text-lg text-balance">
