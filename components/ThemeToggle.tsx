@@ -28,7 +28,7 @@ export default function ThemeToggle() {
     return (
         <button
           onClick={toggleTheme}
-          className="relative w-10 h-10 rounded-full bg-gray-200 dark:bg-slate-700 flex items-center justify-center transition-all duration-500 hover:scale-105"
+          className="relative w-10 h-10 top-20 rounded-full bg-accent-300 dark:bg-accent-800 flex items-center justify-center transition-all duration-500 hover:scale-105"
           aria-label="Toggle theme"
         >
           {/* Sun icon */}
