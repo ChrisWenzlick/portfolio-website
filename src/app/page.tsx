@@ -2,8 +2,6 @@ import SiteHeader from '../../components/SiteHeader';
 import Hero from '../../components/Hero';
 import ThemeToggle from '../../components/ThemeToggle';
 import ProjectCard from '../../components/ProjectCard';
-import TestProjectCard from '../../components/TestProjectCard';
-import Card from '../../components/Card';
 
 export default function Home() {
     return (
@@ -22,110 +20,29 @@ export default function Home() {
           </div>
         </Hero>
 
-        {/* AI TEST */}
-        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-8">
-        <Card
-          title="Portfolio Website"
-          description="A clean developer portfolio built with Next.js, Tailwind, and Markdown."
-          tags={["Next.js", "Tailwind", "TypeScript"]}
-          imageUrl="/typewriter.jpg"
-        />
+        <section
+          className="
+            grid gap-6
+            sm:grid-cols-2
+            lg:grid-cols-3
+            auto-rows-fr
+          "
+        >
+          <ProjectCard
+            label="Featured"
+            title="Developer Portfolio"
+            description="A modern, SEO-friendly portfolio built with Next.js, Tailwind v4, and MDX content."
+            imageUrl="/bench.jpg"
+            tags={["Next.js", "Tailwind", "MDX"]}
+          />
 
-        <Card
-          title="API Backend"
-          description="A REST API featuring caching, authentication, automated testing, and full CI/CD deployment pipelines.
-                       A REST API featuring caching, authentication, automated testing, and full CI/CD deployment pipelines.
-                       A REST API featuring caching, authentication, automated testing, and full CI/CD deployment pipelines.
-                       A REST API featuring caching, authentication, automated testing, and full CI/CD deployment pipelines."
-          tags={[".NET 8", "Azure", "PostgreSQL", "Test1", "Test2", "Test3", "Test4", "Test5", "Test6"]}
-          imageUrl="/jellyfish.jpg"
-        />
-
-        <Card title="Custom Card" bgColor="bg-red-400">
-          <p>This card uses children directly.</p>
-        </Card>
-      </section>
-
-        {/* Featured Projects */}
-        <section id="projects">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured Projects</h2>
-          <div className="grid-cards">
-            <TestProjectCard
-              title="Portfolio Website"
-              description="A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, and Markdown."
-              tags={["Next.js", "Tailwind", "TypeScript"]}
-              imageUrl='/bench.jpg'
-            />
-
-            <TestProjectCard
-              title="API Backend"
-              description="A REST API with caching, authentication, and CI/CD pipeline integration."
-              tags={[".NET 8", "Azure", "PostgreSQL"]}
-              imageUrl='/fence.jpg'
-            />
-            
-            <TestProjectCard
-              title="Portfolio Website"
-              description="A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens."
-              tags={["Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript"
-              ]}
-              imageUrl="/jellyfish.jpg"
-            />
-
-            <TestProjectCard
-              title="API Backend"
-              description="A fully containerized API with caching, authentication, and a complete CI/CD pipeline."
-              tags={[".NET 8", "Azure", "PostgreSQL"]}
-              imageUrl="/people.jpg"
-            />
-
-            <TestProjectCard
-              title="Portfolio Website"
-              description="A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, and Markdown."
-              tags={["Next.js", "Tailwind", "TypeScript"]}
-              imageUrl='/waves.jpg'
-            />
-
-            <TestProjectCard
-              title="API Backend"
-              description="A REST API with caching, authentication, and CI/CD pipeline integration."
-              tags={[".NET 8", "Azure", "PostgreSQL"]}
-              imageUrl='/people.jpg'
-            />
-            
-            <TestProjectCard
-              title="Portfolio Website"
-              description="A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens.
-              A clean, SEO-friendly developer portfolio built with Next.js, Tailwind, MDX, and well-structured design tokens."
-              tags={["Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript",
-                "Next.js", "Tailwind", "TypeScript"
-              ]}
-              imageUrl="/bench.jpg"
-            />
-
-            <TestProjectCard
-              title="API Backend"
-              description="A fully containerized API with caching, authentication, and a complete CI/CD pipeline."
-              tags={[".NET 8", "Azure", "PostgreSQL"]}
-              imageUrl="/jellyfish.jpg"
-            />
-          </div>
+          <ProjectCard
+            title="API Platform"
+            description="A scalable backend with authentication, caching, and CI/CD pipelines."
+            imageUrl="/jellyfish.jpg"
+            tags={[".NET", "PostgreSQL", "Azure"]}
+          />
         </section>
-
   
         {/* Skill Highlights */}
         <section id="skills" className="section bg-grey-100">

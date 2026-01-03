@@ -125,8 +125,8 @@
   }
 
   html {
-    background-color: var(--color-neutral-100);
-    color: var(--color-neutral-900);
+    background-color: var(--color-bg);
+    color: var(--color-text);
     scroll-behavior: smooth;
   }
 
@@ -170,106 +170,6 @@
     @apply py-16 px-6 md:px-12 max-w-6xl mx-auto;
     width: 100%;
   }
-  
-  /* Grid Container */
-  .grid-cards {
-    @apply grid gap-6 sm:grid-cols-2 md:grid-cols-4;
-    width: 100%;
-  }
-
-  /* Cards */
-  .card {
-    @apply relative rounded-2xl shadow-md transition hover:shadow-xl;
-
-    width: 100%;
-    aspect-ratio: 1 / 1; /* Ensures perfect square card */
-    border-radius: 15px;
-    overflow: hidden;
-
-
-    color: var(--color-text);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .card .content {
-    /* Reserve 30% of the card for text and tags */
-    min-height: 30%;
-    max-height: 40%;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
-    padding-bottom: 1rem;
-  }
-
-  /* AI TEST */
-
-  .card-description-wrapper {
-    position: relative;
-    overflow: hidden;
-    height: 3.5rem; /* enough for 1–2 lines */
-  }
-  
-  .card-description-inner {
-    display: block;
-    transition: transform 1.4s ease;
-  }
-  
-  .card:hover .card-description-inner {
-    transform: translateY(-40%);
-  }
-  
-  /* bottom fade overlay */
-  .card-description-fade {
-    pointer-events: none;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1.2rem;
-    mask-image: linear-gradient(to bottom, transparent, black);
-    mask-size: 100%;
-    mask-repeat: no-repeat;
-    -webkit-mask-image: linear-gradient(to bottom, transparent, black);
-    -webkit-mask-size: 100%;
-    -webkit-mask-repeat: no-repeat;
-  }
-
-  .card-tags-wrapper {
-    position: relative;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  
-  .card-tags-inner {
-    display: inline-flex;
-    gap: 0.5rem;
-    transition: transform 1.4s ease;
-  }
-  
-  .card-tags-wrapper:hover .card-tags-inner {
-    transform: translateX(-40%);
-  }
-  
-  /* right fade overlay */
-  .card-tags-fade {
-    pointer-events: none;
-    position: absolute;
-    right: 0;
-    top: 0;
-    height: 100%;
-    width: 1.2rem;
-    background: linear-gradient(to right, transparent, rgb(var(--color-bg)));
-  }
-  
-
-  /* END AI TEST */
-
-
-
 }
 
 @layer utilities {
