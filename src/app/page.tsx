@@ -3,6 +3,7 @@ import Hero from '../../components/Hero';
 import ThemeToggle from '../../components/ThemeToggle';
 import ProjectCard from '../../components/ProjectCard';
 import Button from '../../components/Button';
+import Badge from '../../components/Badge';
 
 export default function Home() {
     return (
@@ -28,6 +29,10 @@ export default function Home() {
           <Button asChild>
             <a href="/projects">View Projects</a>
           </Button>
+
+          <Badge>Next.js</Badge>
+          <Badge variant="secondary">Tailwind</Badge>
+          <Badge variant="primary">TypeScript</Badge>
         </section>
 
         <section
