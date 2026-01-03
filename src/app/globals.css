@@ -157,12 +157,6 @@
     @apply px-4 text-sm transition-colors hover:bg-[var(--color-primary-contrast)] hover:text-[var(--color-primary)]
   }
 
-  /* Buttons */
-  .btn {
-    @apply inline-flex items-center justify-center px-4 py-2 rounded-lg font-semibold transition-all;
-    @apply bg-[--color-accent] text-black hover:bg-[--color-accent-hover];
-  }
-
   section {
     display: flex;
     flex-direction: column;

@@ -2,6 +2,7 @@ import SiteHeader from '../../components/SiteHeader';
 import Hero from '../../components/Hero';
 import ThemeToggle from '../../components/ThemeToggle';
 import ProjectCard from '../../components/ProjectCard';
+import Button from '../../components/Button';
 
 export default function Home() {
     return (
@@ -19,6 +20,15 @@ export default function Home() {
             <button className="btn">View My Work</button>
           </div>
         </Hero>
+
+        <section>
+          <Button>Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button size="lg">Large Button</Button>
+          <Button asChild>
+            <a href="/projects">View Projects</a>
+          </Button>
+        </section>
 
         <section
           className="
