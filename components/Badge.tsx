@@ -9,7 +9,8 @@ type BadgeVariant =
     "secondary" |
     "success" |
     "warning" |
-    "danger";
+    "danger" |
+    "subtle";
 
 type BadgeSize =
     "sm" |
@@ -28,6 +29,8 @@ const badgeVariants: Record<BadgeVariant, string> = {
         "bg-[var(--color-accent)] text-[var(--color-primary-text)]",
     danger:
         "bg-[var(--color-primary)] text-[var(--color-primary-text)]",
+    subtle:
+        "bg-[var(--color-accent)] text-[var(--color-primary-text)]",
 };
 
 const badgeSizes: Record<BadgeSize, string> = {

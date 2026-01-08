@@ -22,7 +22,7 @@ export default function Home() {
           </div>
         </Hero>
 
-        <section>
+        {/* <section>
           <Button>Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button size="lg">Large Button</Button>
@@ -33,30 +33,33 @@ export default function Home() {
           <Badge>Next.js</Badge>
           <Badge variant="secondary">Tailwind</Badge>
           <Badge variant="primary">TypeScript</Badge>
-        </section>
+        </section> */}
 
-        <section
-          className="
-            grid gap-6
+        <section className="px-8 py-16 bg-[var(--color-bg-default)]">
+          <div className="
+            grid
+            grid-cols-1
             sm:grid-cols-2
             lg:grid-cols-3
-            auto-rows-fr
-          "
-        >
-          <ProjectCard
-            label="Featured"
-            title="Developer Portfolio"
-            description="A modern, SEO-friendly portfolio built with Next.js, Tailwind v4, and MDX content."
-            imageUrl="/bench.jpg"
-            tags={["Next.js", "Tailwind", "MDX"]}
-          />
+            xl:grid-cols-4
+            gap-6
+            auto-rows-[1fr]
+          ">
+            <ProjectCard
+              label="Featured"
+              title="Developer Portfolio"
+              description="A modern, SEO-friendly portfolio built with Next.js, Tailwind v4, and MDX content."
+              image="/bench.jpg"
+              skills={["Next.js", "Tailwind", "MDX"]}
+            />
 
-          <ProjectCard
-            title="API Platform"
-            description="A scalable backend with authentication, caching, and CI/CD pipelines."
-            imageUrl="/jellyfish.jpg"
-            tags={[".NET", "PostgreSQL", "Azure"]}
-          />
+            <ProjectCard
+              title="API Platform"
+              description="A scalable backend with authentication, caching, and CI/CD pipelines."
+              image="/jellyfish.jpg"
+              skills={[".NET", "PostgreSQL", "Azure"]}
+            />
+          </div>
         </section>
   
         {/* Skill Highlights */}
