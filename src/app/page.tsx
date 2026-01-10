@@ -1,11 +1,11 @@
-import SiteHeader from '../../components/SiteHeader';
-import Hero from '../../components/Hero';
-import ThemeToggle from '../../components/ThemeToggle';
-import ProjectCard from '../../components/ProjectCard';
-import Button from '../../components/Button';
-import Badge from '../../components/Badge';
-import Grid from '../../components/Grid';
-import Section, { SectionHeading } from '../../components/Section';
+import SiteHeader from '../../components/layout/SiteHeader';
+import Hero from '../../components/layout/Hero';
+import ThemeToggle from '../../components/ui/ThemeToggle';
+import ProjectCard from '../../components/ui/ProjectCard';
+import Button from '../../components/ui/Button';
+import Badge from '../../components/ui/Badge';
+import Grid from '../../components/ui/Grid';
+import Section, { SectionHeading } from '../../components/layout/Section';
 
 export default function Home() {
     return (
