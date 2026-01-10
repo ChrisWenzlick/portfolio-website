@@ -5,6 +5,7 @@ import ProjectCard from '../../components/ProjectCard';
 import Button from '../../components/Button';
 import Badge from '../../components/Badge';
 import Grid from '../../components/Grid';
+import Section, { SectionHeading } from '../../components/Section';
 
 export default function Home() {
     return (
@@ -36,7 +37,8 @@ export default function Home() {
           <Badge variant="primary">TypeScript</Badge>
         </section> */}
 
-        <section className="px-8 py-16 bg-[var(--color-bg-default)]">
+        <Section id="projects">
+          <SectionHeading>Projects</SectionHeading>
           <Grid>
             <ProjectCard
               className="min-h-[380ps] max-h-[520px]"
@@ -64,7 +66,7 @@ export default function Home() {
               />
             ))}
           </Grid> */}
-        </section>
+        </Section>
   
         {/* Skill Highlights */}
         <section id="skills" className="section bg-grey-100">
