@@ -20,7 +20,7 @@ export default function ProjectCard({
 }: ProjectCardProps) {
     return (
         <Card className={className}>
-            <CardMedia image={image} label={label} />
+            <CardMedia src={image} label={label} />
 
             <CardHeader>
                 <h3 className="text-lg font-semibold leading-tight">
@@ -35,7 +35,7 @@ export default function ProjectCard({
             </CardContent>
 
             {skills.length > 0 && (
-                <CardFooter>
+                <CardFooter className="flex flex-wrap gap-2">
                     {skills.map((skill, i) => (
                         <Badge key={i} size="sm" variant="subtle">
                             {skill}

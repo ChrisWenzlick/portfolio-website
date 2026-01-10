@@ -4,6 +4,7 @@ import ThemeToggle from '../../components/ThemeToggle';
 import ProjectCard from '../../components/ProjectCard';
 import Button from '../../components/Button';
 import Badge from '../../components/Badge';
+import Grid from '../../components/Grid';
 
 export default function Home() {
     return (
@@ -36,16 +37,9 @@ export default function Home() {
         </section> */}
 
         <section className="px-8 py-16 bg-[var(--color-bg-default)]">
-          <div className="
-            grid
-            grid-cols-1
-            sm:grid-cols-2
-            lg:grid-cols-3
-            xl:grid-cols-4
-            gap-6
-            auto-rows-[1fr]
-          ">
+          <Grid>
             <ProjectCard
+              className="min-h-[380ps] max-h-[520px]"
               label="Featured"
               title="Developer Portfolio"
               description="A modern, SEO-friendly portfolio built with Next.js, Tailwind v4, and MDX content."
@@ -54,12 +48,22 @@ export default function Home() {
             />
 
             <ProjectCard
+              className="min-h-[380ps] max-h-[520px]"
               title="API Platform"
               description="A scalable backend with authentication, caching, and CI/CD pipelines."
               image="/jellyfish.jpg"
               skills={[".NET", "PostgreSQL", "Azure"]}
             />
-          </div>
+          </Grid>
+          {/* <Grid>
+            {projects.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                {...project}
+                className="min-h-[380px] max-h-[520px] w-full"
+              />
+            ))}
+          </Grid> */}
         </section>
   
         {/* Skill Highlights */}

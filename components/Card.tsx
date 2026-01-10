@@ -1,39 +1,83 @@
 "use client";
 
-import * as React from "react";
-import clsx from "clsx";
+import React from "react";
 import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
 
-export default function Card({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+
+// --------------------
+// Variants
+// --------------------
+const cardStyles = cva(
+  "flex flex-col bg-white text-foreground overflow-hidden", // base style
+  {
+    variants: {
+      shadow: {
+        none: "shadow-none",
+        sm: "shadow-sm",
+        md: "shadow",
+        lg: "shadow-lg",
+      },
+      radius: {
+        none: "rounded-none",
+        sm: "rounded-sm",
+        md: "rounded-md",
+        lg: "rounded-lg",
+        xl: "rounded-xl",
+      },
+      bordered: {
+        true: "border border-gray-200",
+        false: "",
+      },
+      hoverable: {
+        true: "transition-shadow hover:shadow-lg",
+        false: "",
+      },
+    },
+    defaultVariants: {
+      shadow: "sm",
+      radius: "md",
+      bordered: false,
+      hoverable: false,
+    },
+  }
+);
+
+
+// --------------------
+// Types
+// --------------------
+type CardVariantProps = VariantProps<typeof cardStyles>;
+type CardProps = React.HTMLAttributes<HTMLDivElement> & CardVariantProps;
+
+
+// --------------------
+// Components
+// --------------------
+export default function Card({ className, shadow, radius, bordered, hoverable, ...props }: CardProps) {
   return (
-    <div className={clsx(
-      "flex flex-col overflow-hidden rounded-xl",
-      "bg-[var(--color-bg-surface)] text-[var(--color-text-primary)]",
-      "border border-[var(--color-border-subtle)]",
-      className
-    )}
+    <div className={cn(cardStyles({ shadow, radius, bordered, hoverable }), className)}
     {...props}
     />
   );
 }
 
-/* Subcomponents */
-
 export function CardMedia({
-  image,
+  src,
   label,
   alt,
 }: {
-  image?: string;
+  src?: string;
   label?: string;
   alt?: string;
 }) {
   return (
     <div className="relative aspect-[16/9] w-full overflow-hidden">
-      {image && (
+      {src && (
         <>
           <Image
-            src={image}
+            src={src}
             alt={alt ?? label ?? ""}
             fill
             className="object-cover"
@@ -56,41 +100,27 @@ export function CardMedia({
   );
 }
 
-export function CardHeader({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+export function CardHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={clsx("px-4 pt-4", className)}
+      className={cn("p-4", className)}
       {...props}
     />
   );
 }
 
-export function CardContent({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
- return (
-  <div
-    className={clsx("px-4 pt-2 flex-1", className)}
-    {...props}
-  />
- );
+export function CardTitle({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) {
+  return <h3 className={cn("text-lg font-semibold leading-none", className)} {...props} />;
 }
 
-export function CardFooter({
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
-  return (
-    <div
-      className={clsx(
-        "px-4 pb-4 pt-3 flex flex-wrap gap-2",
-        className
-      )}
-      {...props}
-    />
-  );
+export function CardDescription({ className, ...props }: React.HTMLAttributes<HTMLParagraphElement>) {
+  return <p className={cn("text-sm text-muted-foreground", className)} {...props} />;
+}
+
+export function CardContent({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("p-4 pt-0", className)} {...props} />;
+}
+
+export function CardFooter({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+  return <div className={cn("p-4 pt-0", className)} {...props} />;
 }
