@@ -1,9 +1,6 @@
-import SiteHeader from '../../components/layout/SiteHeader';
 import Hero from '../../components/layout/Hero';
 import ThemeToggle from '../../components/ui/ThemeToggle';
 import ProjectCard from '../../components/ui/ProjectCard';
-import Button from '../../components/ui/Button';
-import Badge from '../../components/ui/Badge';
 import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
 
@@ -12,7 +9,7 @@ export default function Home() {
       <main>
         <ThemeToggle />
         
-        <Hero className='section' imageUrl='/desk.jpg'>
+        {/* <Hero className='section' imageUrl='/desk.jpg'>
           <div className="max-w-3xl mx-auto space-y-6">
             <h1 className="text-5xl font-bold">Hi, I’m Christopher Wenzlick</h1>
             <p className="text-lg text-balance">
@@ -20,7 +17,18 @@ export default function Home() {
             </p>
             <button className="btn">View My Work</button>
           </div>
-        </Hero>
+        </Hero> */}
+
+        <Hero
+          title="Hi, I'm Chris."
+          subtitle="I build maintainable software systems with clean architecture and modern tooling."
+          description="Focused on backend, APIs, and cloud, with full-stack capability."
+          image="/desk.jpg"
+          ctas={[
+            { label: "View Projects", href: "#projects", variant: "primary" },
+            { label: "Contact", href: "#contact", variant: "outline" },
+          ]}
+        />
 
         {/* <section>
           <Button>Primary</Button>
