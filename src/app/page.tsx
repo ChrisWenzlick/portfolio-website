@@ -111,14 +111,14 @@ export default function Home() {
         <TestimonialsSection />
 
         {/* Footer */}
-        <footer className="section text-center text-sm text-grey-400 border-t">
+        {/* <footer className="section text-center text-sm text-grey-400 border-t">
           <p>© {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.</p>
           <div className="flex justify-center gap-4 mt-4">
             <a href="https://github.com/yourusername">GitHub</a>
             <a href="https://linkedin.com/in/yourusername">LinkedIn</a>
             <a href="mailto:you@example.com">Email</a>
           </div>
-        </footer>
+        </footer> */}
       </main>
     );
   }
