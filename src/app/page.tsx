@@ -4,6 +4,7 @@ import ProjectCard from '../../components/ui/ProjectCard';
 import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
 import SkillsSection from '../../components/layout/SkillsSection';
+import TestimonialsSection from '../../components/layout/TestimonialsSection';
 
 export default function Home() {
     return (
@@ -45,7 +46,7 @@ export default function Home() {
         </section> */}
 
         <SkillsSection />
-        
+
         <Section id="projects">
           <SectionHeading>Projects</SectionHeading>
           <Grid>
@@ -78,7 +79,7 @@ export default function Home() {
         </Section>
   
         {/* Skill Highlights */}
-        <section id="skills" className="section bg-grey-100">
+        {/* <section id="skills" className="section bg-grey-100">
           <h2 className="text-3xl font-bold mb-8 text-center">Core Skills</h2>
           <div className="grid sm:grid-cols-3 gap-8 text-center">
             <div>
@@ -94,10 +95,10 @@ export default function Home() {
               <p>Familiar with Azure, AWS, CI/CD pipelines, and containerized deployments.</p>
             </div>
           </div>
-        </section>
+        </section> */}
   
         {/* Testimonials */}
-        <section id="testimonials" className="section">
+        {/* <section id="testimonials" className="section">
           <h2 className="text-3xl font-bold mb-8 text-center">Testimonials</h2>
           <div className="card max-w-2xl mx-auto text-center">
             <p className="italic mb-4">
@@ -105,8 +106,10 @@ export default function Home() {
             </p>
             <p className="font-semibold">— Jane Smith, Engineering Manager</p>
           </div>
-        </section>
+        </section> */}
   
+        <TestimonialsSection />
+
         {/* Footer */}
         <footer className="section text-center text-sm text-grey-400 border-t">
           <p>© {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.</p>
