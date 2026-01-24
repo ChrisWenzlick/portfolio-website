@@ -3,6 +3,7 @@ import ThemeToggle from '../../components/ui/ThemeToggle';
 import ProjectCard from '../../components/ui/ProjectCard';
 import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
+import SkillsSection from '../../components/layout/SkillsSection';
 
 export default function Home() {
     return (
@@ -43,6 +44,8 @@ export default function Home() {
           <Badge variant="primary">TypeScript</Badge>
         </section> */}
 
+        <SkillsSection />
+        
         <Section id="projects">
           <SectionHeading>Projects</SectionHeading>
           <Grid>
