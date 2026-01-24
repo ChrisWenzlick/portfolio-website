@@ -1,5 +1,5 @@
 import Hero from '../../components/layout/Hero';
-import ThemeToggle from '../../components/ui/ThemeToggle';
+import DarkModeToggle from '../../components/ui/DarkModeToggle';
 import ProjectCard from '../../components/ui/ProjectCard';
 import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
@@ -9,8 +9,6 @@ import TestimonialsSection from '../../components/layout/TestimonialsSection';
 export default function Home() {
     return (
       <main>
-        <ThemeToggle />
-        
         {/* <Hero className='section' imageUrl='/desk.jpg'>
           <div className="max-w-3xl mx-auto space-y-6">
             <h1 className="text-5xl font-bold">Hi, I’m Christopher Wenzlick</h1>

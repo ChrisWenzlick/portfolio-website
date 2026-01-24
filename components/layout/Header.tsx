@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import DarkModeToggle from "../ui/DarkModeToggle";
 
 const NAV_LINKS = [
     { href: "/", label: "Home" },
@@ -40,6 +41,7 @@ export default function Header({
                             {label}
                         </Link>
                     ))}
+                    <DarkModeToggle />
                 </div>
 
                 {/* Mobile menu button */}
@@ -70,6 +72,7 @@ export default function Header({
                                 {label}
                             </Link>
                         ))}
+                        <DarkModeToggle />
                     </div>
                 </div>
             )}

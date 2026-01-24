@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 
-export default function ThemeToggle() {
+export default function DarkModeToggle() {
     const [isDark, setIsDark] = useState(false);
 
     useEffect(() => {
@@ -28,12 +28,12 @@ export default function ThemeToggle() {
     return (
         <button
           onClick={toggleTheme}
-          className="relative w-10 h-10 top-20 rounded-full bg-accent-300 dark:bg-accent-800 flex items-center justify-center transition-all duration-500 hover:scale-105"
+          className="w-10 h-10 top-20 rounded-full bg-accent-300 dark:bg-accent-800 flex items-center justify-center transition-all duration-500 hover:scale-105"
           aria-label="Toggle theme"
         >
           {/* Sun icon */}
           <span
-            className={`absolute inset-0 flex items-center justify-center transition-all duration-700 transform
+            className={`flex items-center justify-center transition-all duration-700 transform
               ${isDark ? "scale-0 opacity-0 rotate-180" : "scale-100 opacity-100 rotate-0"}`}
           >
             ☀️
@@ -41,7 +41,7 @@ export default function ThemeToggle() {
     
           {/* Moon icon */}
           <span
-            className={`absolute inset-0 flex items-center justify-center transition-all duration-700 transform
+            className={`flex items-center justify-center transition-all duration-700 transform
               ${isDark ? "scale-100 opacity-100 rotate-0" : "scale-0 opacity-0 -rotate-180"}`}
           >
             🌙
