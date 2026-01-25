@@ -1,5 +1,4 @@
 import Hero from '../../components/layout/Hero';
-import DarkModeToggle from '../../components/ui/DarkModeToggle';
 import ProjectCard from '../../components/ui/ProjectCard';
 import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
