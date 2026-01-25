@@ -1,26 +1,36 @@
 export interface Testimonial {
+    id: string;
     quote: string;
-    name: string;
-    title?: string;
+    author: string;
+    role?: string;
+    company?: string;
+    avatar?: string;    // image path
+    href?: string;      // external link
 }
 
 export const testimonials: Testimonial[] = [
     {
+        id: "testimonial-1",
         quote:
-        "Christopher consistently delivered high-quality work and was able to ramp up on complex systems quickly.",
-        name: "Jane Doe",
-        title: "Engineering Manager",
-    },
-    {
+          "Chris consistently delivered clean, maintainable solutions and raised the quality bar for the entire team.",
+        author: "Jane Doe",
+        role: "Senior Engineering Manager",
+        company: "Healthcare Tech Co.",
+      },
+      {
+        id: "testimonial-2",
         quote:
-        "Strong communicator, pragmatic engineer, and a huge help in reducing technical debt.",
-        name: "John Smith",
-        title: "Senior Software Engineer",
-    },
-    {
+          "One of the most dependable engineers I've worked with—strong technical judgment and great communication.",
+        author: "John Smith",
+        role: "Principal Software Engineer",
+        company: "Enterprise SaaS Company",
+      },
+      {
+        id: "testimonial-3",
         quote:
-        "Reliable, thoughtful, and easy to work with. I’d gladly work with him again.",
-        name: "Alex Johnson",
-        title: "Product Manager",
-    },
+          "Chris has a rare ability to balance speed with long-term maintainability. I'd happily work with him again.",
+        author: "Alex Johnson",
+        role: "Product Manager",
+      },
+    
 ];
