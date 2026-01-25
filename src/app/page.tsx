@@ -1,7 +1,4 @@
 import Hero from '../../components/layout/Hero';
-import ProjectCard from '../../components/ui/ProjectCard';
-import Grid from '../../components/ui/Grid';
-import Section, { SectionHeading } from '../../components/layout/Section';
 import SkillsSection from '../../components/layout/SkillsSection';
 import TestimonialsSection from '../../components/layout/TestimonialsSection';
 import { ProjectsSection } from '../../components/layout/ProjectsSection';
