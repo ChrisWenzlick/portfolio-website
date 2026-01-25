@@ -1,54 +1,63 @@
-import {
-    SiDotnet,
-    SiDocker,
-    SiReact,
-    SiNextdotjs,
-    SiPostgresql,
-    SiTypescript,
-    SiGithubactions,
-} from "react-icons/si";
+export interface Skill {
+    name: string;
+    icon?: string;      // path to SVG
+}
 
-export const skills = [
+export interface SkillGroup {
+    id: string;
+    title: string;
+    description?: string;
+    skills: Skill[];
+}
+
+export const skillGroups: SkillGroup[] = [
     {
-        group: "Backend & APIs",
-        description: "Designing and building scalable backend services and APIs.",
-        items: [
-            { name: "C#", icon: SiDotnet },
-            { name: ".NET / ASP.NET Core", icon: SiDotnet },
+        id: "backend",
+        title: "Backend & APIs",
+        description: "Designing reliable, maintainable server-side systems.",
+        skills: [
+            { name: ".NET" },
+            { name: "C#" },
             { name: "REST APIs" },
-            { name: "gRPC" },
-            { name: "Entity Framework Core" },
-            { name: "PostgreSQL", icon: SiPostgresql },
+            { name: "PostgreSQL" },
+            { name: "SQL Server" },
+            { name: "Authentication & Authorization" },
         ],
     },
     {
-        group: "Cloud & DevOps",
-        description: "Deploying, automating, and operating cloud-native systems.",
-        items: [
-            { name: "Azure" },
-            { name: "Docker", icon: SiDocker },
-            { name: "Terraform" },
-            { name: "CI/CD", icon: SiGithubactions },
-        ],
-    },
-    {
-        group: "Frontend",
-        description: "Building performant, accessible user interfaces.",
-        items: [
-            { name: "React", icon: SiReact },
-            { name: "Next.js", icon: SiNextdotjs },
-            { name: "TypeScript", icon: SiTypescript },
+        id: "frontend",
+        title: "Frontend & UI",
+        description: "Building fast, accessible user interfaces.",
+        skills: [
+            { name: "React" },
+            { name: "Next.js" },
             { name: "Tailwind CSS" },
+            { name: "TypeScript" },
+            { name: "Responsive Design" },
         ],
     },
     {
-        group: "Systems & Architecture",
-        description: "Designing systems that scale and remain maintainable.",
-        items: [
-            { name: "Distributed Systems" },
+        id: "cloud",
+        title: "Cloud & DevOps",
+        description: "Deploying and operating production systems.",
+        skills: [
+            { name: "Azure" },
+            { name: "CI/CD Pipelines" },
+            { name: "Docker" },
+            { name: "Infrastructure as Code" },
+            { name: "Monitoring & Logging" },
+        ],
+    },
+    {
+        id: "architecture",
+        title: "Architecture & Practices",
+        description: "Writing software that scales with teams and complexity.",
+        skills: [
+            { name: "System Design" },
             { name: "Domain-Driven Design" },
-            { name: "Event-Driven Architecture" },
-            { name: "Automated Testing" },
+            { name: "Code Reviews" },
+            { name: "Testing Strategies" },
+            { name: "Technical Documentation" },
         ],
     },
 ];

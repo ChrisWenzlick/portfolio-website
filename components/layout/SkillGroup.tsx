@@ -1,36 +1,27 @@
 import { SkillBadge } from "../ui/SkillBadge";
+import { SkillGroup as SkillGroupType } from "@/content/skills";
 
-type SkillItem = {
-    name: string;
-    icon?: React.ComponentType<{ className?: string }>;
-};
+interface SkillGroupProps {
+    group: SkillGroupType;
+}
 
-export function SkillGroup({
-    title,
-    description,
-    items,
-}: {
-    title: string;
-    description?: string;
-    items: SkillItem[];
-}) {
+export default function SkillGroup({ group }: SkillGroupProps) {
     return (
         <div className="space-y-3">
             <div>
-                <h3 className="text-lg font-semibold">{title}</h3>
-                {description && (
-                    <p className="text-sm text-[var(--color-text-secondary)]">
-                        {description}
+                <h3 className="text-lg font-semibold">{group.title}</h3>
+                {group.description && (
+                    <p className="text-sm text-muted-foreground">
+                        {group.description}
                     </p>
                 )}
             </div>
 
             <div className="flex flex-wrap gap-2">
-                {items.map((skill) => (
+                {group.skills.map((skill) => (
                     <SkillBadge
                         key={skill.name}
                         name={skill.name}
-                        icon={skill.icon}
                     />
                 ))}
             </div>
