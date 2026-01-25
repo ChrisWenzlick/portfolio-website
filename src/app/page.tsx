@@ -4,6 +4,7 @@ import Grid from '../../components/ui/Grid';
 import Section, { SectionHeading } from '../../components/layout/Section';
 import SkillsSection from '../../components/layout/SkillsSection';
 import TestimonialsSection from '../../components/layout/TestimonialsSection';
+import { ProjectsSection } from '../../components/layout/ProjectsSection';
 
 export default function Home() {
     return (
@@ -43,8 +44,8 @@ export default function Home() {
         </section> */}
 
         <SkillsSection />
-
-        <Section id="projects">
+        <ProjectsSection />
+        {/* <Section id="projects">
           <SectionHeading>Projects</SectionHeading>
           <Grid>
             <ProjectCard
@@ -64,16 +65,7 @@ export default function Home() {
               skills={[".NET", "PostgreSQL", "Azure"]}
             />
           </Grid>
-          {/* <Grid>
-            {projects.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                {...project}
-                className="min-h-[380px] max-h-[520px] w-full"
-              />
-            ))}
-          </Grid> */}
-        </Section>
+        </Section> */}
   
         {/* Skill Highlights */}
         {/* <section id="skills" className="section bg-grey-100">
