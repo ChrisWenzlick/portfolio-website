@@ -1,5 +1,5 @@
 import { SkillGroup } from "./SkillGroup";
-import { skills } from "../../content/skills";
+import { skills } from "../../src/content/skills";
 import Section, { SectionHeading } from "../layout/Section";
 
 export default function SkillsSection() {

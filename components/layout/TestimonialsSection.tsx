@@ -1,6 +1,6 @@
 import Card, { CardContent, CardFooter } from "../ui/Card";
 import Section, { SectionHeading } from "../layout/Section";
-import { testimonials } from "../../content/testimonials";
+import { testimonials } from "../../src/content/testimonials";
 
 export default function TestimonialsSection() {
     return (
