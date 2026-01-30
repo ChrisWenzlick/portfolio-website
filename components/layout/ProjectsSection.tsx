@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Grid from "../ui/Grid";
 import ProjectCard from "../ui/ProjectCard";
 import Section, { SectionHeading } from "./Section";
@@ -9,14 +10,20 @@ export function ProjectsSection() {
             <SectionHeading>Projects</SectionHeading>
             <Grid>
                 {projects.map((project) => (
-                    <ProjectCard
+                    <Link
                         key={project.slug}
-                        image={project.image}
-                        label={project.label}
-                        title={project.title}
-                        description={project.description}
-                        skills={project.skills}
-                    />
+                        href={`/projects/${project.slug}`}
+                        className="block"
+                    >
+                        <ProjectCard
+                            key={project.slug}
+                            image={project.image}
+                            label={project.label}
+                            title={project.title}
+                            description={project.description}
+                            skills={project.skills}
+                        />
+                    </Link>
                 ))}
             </Grid>
         </Section>
