@@ -1,6 +1,6 @@
 import Card, { CardContent, CardFooter } from "../ui/Card";
 import Section, { SectionHeading } from "../layout/Section";
-import { testimonials } from "../../content/testimonials";
+import { testimonials } from "../../src/content/testimonials";
 
 export default function TestimonialsSection() {
     return (
@@ -22,12 +22,9 @@ export default function TestimonialsSection() {
 
                         <CardFooter className="pt-4">
                             <div className="text-sm font-medium">
-                                {t.name}
-                                {t.title && (
-                                    <span className="block text-xs text-muted-foreground">
-                                        {t.title}
-                                    </span>
-                                )}
+                            — {t.author}
+                            {t.role && `, ${t.role}`}
+                            {t.company && ` @ ${t.company}`}
                             </div>
                         </CardFooter>
                     </Card>
