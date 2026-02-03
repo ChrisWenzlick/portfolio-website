@@ -12,32 +12,21 @@ const NAV_LINKS = [
     { href: "/contact", label: "Contact" },
 ];
 
-export default function Header({
-    className,
-}: React.HTMLAttributes<HTMLElement>) {
+export default function Header({ className }: React.HTMLAttributes<HTMLElement>) {
     const [open, setOpen] = useState(false);
 
     return (
-        <header
-            className={cn(
-                "sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-md text-foreground",
-                className
-            )}
-        >
-            <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <header className={cn("app-header", className)}>
+            <nav className="app-header__inner">
                 {/* Brand / Logo */}
-                <Link href="/" className="text-xl font-bold">
+                <Link href="/" className="app-header__brand">
                     CW
                 </Link>
 
                 {/* Desktop links */}
-                <div className="hidden md:flex items-center gap-6">
+                <div className="app-header__nav-desktop">
                     {NAV_LINKS.map(({ href, label }) => (
-                        <Link
-                            key={href}
-                            href={href}
-                            className="text-sm font-medium hover:text-primary transition-colors"
-                        >
+                        <Link key={href} href={href} className="app-header__link">
                             {label}
                         </Link>
                     ))}
@@ -47,26 +36,22 @@ export default function Header({
                 {/* Mobile menu button */}
                 <button
                     onClick={() => setOpen((prev) => !prev)}
-                    className="md:hidden inline-flex items-center justify-center p-2 rounded hover:bg-muted"
+                    className="app-header__menu-toggle"
                 >
                     <span className="sr-only">Toggle menu</span>
-                    <div className="h-4 w-6 flex flex-col justify-between">
-                        <span className="block h-0.5 bg-current"></span>
-                        <span className="block h-0.5 bg-current"></span>
-                        <span className="block h-0.5 bg-current"></span>
-                    </div>
+                    <span className="app-header__hamburger" />
                 </button>
             </nav>
 
             {/* Mobile dropdown */}
             {open && (
-                <div className="md:hidden border-t bg-background shadow-sm">
-                    <div className="px-4 py-2 space-y-2">
+                <div className="app-header__mobile">
+                    <div className="app-header__mobile-inner">
                         {NAV_LINKS.map(({ href, label }) => (
                             <Link
                                 key={href}
                                 href={href}
-                                className="block py-1 text-sm font-medium hover:text-primary transition-colors"
+                                className="app-header__mobile-link"
                                 onClick={() => setOpen(false)}
                             >
                                 {label}

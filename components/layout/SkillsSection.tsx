@@ -4,10 +4,10 @@ import Section, { SectionHeading } from "../layout/Section";
 
 export default function SkillsSection() {
     return (
-        <Section>
+        <Section className="skills-section">
             <SectionHeading>What I Work With</SectionHeading>
             
-            <div className="grid gap-10 md:grid-cols-2">
+            <div className="skills-section__grid">
                 {skillGroups.map((group) => (
                     <SkillGroup key={group.id} group={group} />
                 ))}

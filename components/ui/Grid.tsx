@@ -1,18 +1,23 @@
 import React from "react";
 import { cn } from "@/lib/utils"
 
+interface GridProps extends React.HTMLAttributes<HTMLDivElement> {
+    columns?: "auto" | "2" | "3" | "4";
+    gap?: "sm" | "md" | "lg";
+}
+
 export default function Grid({
     className,
+    columns = "auto",
+    gap = "md",
     ...props
-}: React.HTMLAttributes<HTMLDivElement>) {
+}: GridProps) {
     return (
         <div
             className={cn(
-                "grid gap-6",
-                // Responsive columns
-                "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3",
-                // Equal heights via align-stretch
-                "items-stretch",
+                "grid",
+                `grid--cols-${columns}`,
+                `grid--gap-${gap}`,
                 className
             )}
             {...props}

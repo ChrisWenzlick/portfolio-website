@@ -1,5 +1,6 @@
 import Card, { CardMedia, CardHeader, CardContent, CardFooter } from "./Card"
 import Badge from "./Badge";
+import { cn } from "@/lib/utils";
 
 interface ProjectCardProps {
     image?: string;
@@ -19,23 +20,19 @@ export default function ProjectCard({
     className,
 }: ProjectCardProps) {
     return (
-        <Card className={className}>
+        <Card className={cn("project-card", className)} hoverable bordered>
             <CardMedia src={image} label={label} />
 
             <CardHeader>
-                <h3 className="text-lg font-semibold leading-tight">
-                    {title}
-                </h3>
+                <h3 className="project-card__title">{title}</h3>
             </CardHeader>
 
             <CardContent>
-                <p className="text-sm text-[var(--color-text-secondary)] line-clamp-3">
-                    {description}
-                </p>
+                <p className="project-card__description">{description}</p>
             </CardContent>
 
             {skills.length > 0 && (
-                <CardFooter className="flex flex-wrap gap-2">
+                <CardFooter className="project-card__footer">
                     {skills.map((skill, i) => (
                         <Badge key={i} size="sm" variant="subtle">
                             {skill}

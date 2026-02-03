@@ -2,26 +2,22 @@ import Section from "../layout/Section"
 
 export default function Footer() {
     return (
-        <footer className="border-t border-[var(--color-border-subtle)]">
-            <Section className="py-12">
-                <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <footer className="site-footer">
+            <Section className="site-footer__section">
+                <div className="site-footer__top">
                     {/* Identity */}
-                    <div>
-                        <p className="font-semibold">
-                            Christopher Wenzlick
-                        </p>
-                        <p className="text-sm text-muted-foreground">
-                            Software Engineer
-                        </p>
+                    <div className="site-footer__identity">
+                        <p className="site-footer__name">Christopher Wenzlick</p>
+                        <p className="site-footer__role">Software Engineer</p>
                     </div>
 
                     {/* Links */}
-                    <nav className="flex gap-4 text-sm">
+                    <nav className="site-footer__nav">
                         <a
                             href="https://github.com/ChrisWenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
+                            className="site-footer__link"
                         >
                             GitHub
                         </a>
@@ -30,14 +26,14 @@ export default function Footer() {
                             href="https://linkedin.com/in/christopherwenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
+                            className="site-footer__link"
                         >
                             LinkedIn
                         </a>
 
                         <a
                             href="mailto:placeholder@fakemail.com"
-                            className="text-muted-foreground hover:text-foreground transition-colors"
+                            className="site-footer__link"
                         >
                             Email
                         </a>
@@ -45,7 +41,7 @@ export default function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <p className="mt-8 text-xs text-muted-foreground">
+                <p className="site-footer__copyright">
                     © {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.
                 </p>
             </Section>
