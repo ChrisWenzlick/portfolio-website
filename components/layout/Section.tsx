@@ -7,11 +7,7 @@ export default function Section({
 }: React.HTMLAttributes<HTMLElement>) {
     return (
         <section
-            className={cn(
-                "w-full",
-                "py-16 sm:py-20 lg:py-24",
-                className
-            )}
+            className={cn("section", className)}
             {...props}
         />
     );
@@ -23,10 +19,7 @@ export function SectionHeading({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
     return (
         <h2
-            className={cn(
-                "text-2xl sm:text-3xl font-bold tracking-tight mb-6",
-                className
-            )}
+            className={cn("section-heading", className)}
             {...props}
         />
     );

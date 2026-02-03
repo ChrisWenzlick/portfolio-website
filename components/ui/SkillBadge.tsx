@@ -3,20 +3,16 @@ import { cn } from "@/lib/utils";
 export function SkillBadge({
     name,
     icon: Icon,
+    className,
 }: {
     name: string;
     icon?: React.ComponentType<{ className?: string }>;
+    className?: string;
 }) {
     return (
-        <span
-            className={cn(
-                "inline-flex items-center gap-2 rounded-md",
-                "border border-[var(--color-border-subtle)]",
-                "bg-[var(--color-bg-surface)] px-3 py-1 text-sm"
-            )}
-        >
-            {Icon && <Icon className="h-4 w-4" aria-hidden />}
-            <span>{name}</span>
+        <span className={cn("skill-badge", className)}>
+            {Icon && <Icon className="skill-badge__icon" aria-hidden />}
+            <span className="skill-badge__label">{name}</span>
         </span>
     );
 }

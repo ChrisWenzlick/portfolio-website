@@ -6,14 +6,14 @@ import { projects } from "@/content";
 
 export function ProjectsSection() {
     return (
-        <Section id="projects">
+        <Section id="projects" className="projects-section">
             <SectionHeading>Projects</SectionHeading>
-            <Grid>
+            <Grid className="projects-grid">
                 {projects.map((project) => (
                     <Link
                         key={project.slug}
                         href={`/projects/${project.slug}`}
-                        className="block"
+                        className="projects-grid__item"
                     >
                         <ProjectCard
                             key={project.slug}

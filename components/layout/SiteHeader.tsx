@@ -5,13 +5,13 @@ import Link from 'next/link'
 
 export default function SiteHeader() {
     return (
-        <header className="flex justify-between items-center p-4 w-full h-[var(--navbar-height)] shadow-sm fixed top-0 z-50">
-          <Link href="#top" className="text-xl font-bold">CW</Link>
-          <nav className="gap-4 text-sm font-medium  inline-flex flex-row items-center whitespace-nowrap max-w-full overflow-x-auto p-2 h-12">
-            <Link href="#projects">Projects</Link>
-            <Link href="#skills">Skills</Link>
-            <Link href="#testimonials">Testimonials</Link>
-            <Link href="#contact">Contact</Link>
+        <header className="site-header">
+          <Link href="#top" className="site-header__brand">CW</Link>
+          <nav className="site-header__nav">
+            <Link href="#projects" className="site-header__link">Projects</Link>
+            <Link href="#skills" className="site-header__link">Skills</Link>
+            <Link href="#testimonials" className="site-header__link">Testimonials</Link>
+            <Link href="#contact" className="site-header__link">Contact</Link>
           </nav>
         </header>
     );

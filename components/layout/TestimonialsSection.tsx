@@ -4,24 +4,24 @@ import { testimonials } from "../../src/content/testimonials";
 
 export default function TestimonialsSection() {
     return (
-        <Section>
+        <Section className="testimonials-section">
             <SectionHeading>What People Say</SectionHeading>
 
-            <p className="mt-2 max-w-2xl text-muted-foreground">
+            <p className="testimonials-section__intro">
                 A few words from people I&apos;ve worked with across different teams and projects.
             </p>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="testimonials-section__grid">
                 {testimonials.map((t, i) => (
-                    <Card key={i} className="flex h-full">
-                        <CardContent className="flex-1 pt-6">
-                            <p className="text-sm leading-relaxed">
+                    <Card key={i} className="testimonial-card">
+                        <CardContent className="testimonial-card__content">
+                            <p className="testimonial-card__quote">
                                 &quot;{t.quote}&quot;
                             </p>
                         </CardContent>
 
-                        <CardFooter className="pt-4">
-                            <div className="text-sm font-medium">
+                        <CardFooter className="testimonial-card__footer">
+                            <div className="testimonial-card__author">
                             — {t.author}
                             {t.role && `, ${t.role}`}
                             {t.company && ` @ ${t.company}`}
