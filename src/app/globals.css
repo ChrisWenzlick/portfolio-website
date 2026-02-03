@@ -1032,7 +1032,63 @@
   .testimonial-card__author {
     font-size: 0.875rem; /* text-sm */
     font-weight: 500;    /* font-medium */
-  }  
+  }
+
+  /*
+  ------------------------------
+  Dark Mode Toggle Component
+  ------------------------------
+  */
+  .theme-toggle {
+    width: 2.5rem;  /* w-10 */
+    height: 2.5rem; /* h-10 */
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-accent-300);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    position: relative;
+  }
+  
+  .dark .theme-toggle {
+    background: var(--color-accent-800);
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.05);
+  }
+  
+  .theme-toggle__icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.7s ease, opacity 0.7s ease;
+  }
+  
+  /* Sun visible in light mode */
+  .theme-toggle__icon--sun {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  
+  /* Moon hidden in light mode */
+  .theme-toggle__icon--moon {
+    transform: scale(0) rotate(-180deg);
+    opacity: 0;
+  }
+  
+  /* When dark mode is active, swap them */
+  .theme-toggle--dark .theme-toggle__icon--sun {
+    transform: scale(0) rotate(180deg);
+    opacity: 0;
+  }
+  
+  .theme-toggle--dark .theme-toggle__icon--moon {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 @layer utilities {
