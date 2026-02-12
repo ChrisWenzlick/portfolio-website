@@ -1,6 +1,9 @@
 import { notFound } from "next/navigation";
 import path from "path";
 import fs from "fs";
+import ImageGallery from "components/ui/ImageGallery";
+import ProjectMeta from "components/layout/ProjectMeta";
+import { MDXComponents } from "components/util/MDXComponents";
 
 interface ProjectPageProps {
     params: { slug: string };
@@ -21,45 +24,44 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     const { slug } = await params;
 
     try {
-        const ProjectMdx = (await import(`@/content/projects/${slug}.mdx`)).default;
-        const metadata = (await import(`@/content/projects/${slug}.mdx`)).metadata;
+        const importedData = await import(`@/content/projects/${slug}.mdx`);
+        const ProjectMdx = importedData.default;
+        const metadata = importedData.metadata;
+
+        // images?: { src: string; alt?: string }[]
+        const images = metadata.images ?? [];
 
         return (
-            <article className="mx-auto max-w-3xl px-4 py-12">
-                <header className="mb-8">
-                    <h1 className="text-3xl font-bold">{metadata.title}</h1>
-                    <p className="mt-2 text-muted-foreground">
-                        {metadata.summary}
-                    </p>
+            <article className="mx-auto max-w-4xl px-4 py-12">
+                {/* Header */}
+                <header className="mb-10 space-y-4">
+                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                        {metadata.title}
+                    </h1>
+                    {metadata.description && (
+                        <p className="max-w-2xl text-lg text-[var(--color-text-secondary)]">
+                            {metadata.description}
+                        </p>
+                    )}
+
+                    <ProjectMeta
+                        technologies={metadata.technologies}
+                        repo={metadata.repo}
+                        live={metadata.live}
+                    />
                 </header>
 
-                {metadata.technologies && (
-                    <div className="flex flex-wrap gap-2 mb-6">
-                    {metadata.technologies.map((tech: string) => (
-                        <span
-                            key={tech}
-                            className="px-2 py-1 rounded bg-gray-200 text-gray-800 text-sm"
-                        >
-                            {tech}
-                        </span>
-                    ))}
+                {/* Image Gallery */}
+                {images.length > 0 && (
+                    <div className="mb-10">
+                        <ImageGallery images={images} size="md" />
                     </div>
                 )}
-
+                
+                {/* Main Content */}
                 <div className="prose prose-neutral dark:prose-invert max-w-none">
-                    <ProjectMdx />
+                    <ProjectMdx components={MDXComponents} />
                 </div>
-
-                {metadata.repo && (
-                    <a href={metadata.repo} target="_blank">
-                        View Code
-                    </a>
-                )}
-                {metadata.live && (
-                    <a href={metadata.live} target="_blank">
-                        Live Demo
-                    </a>
-                )}
             </article>
         );
     } catch {

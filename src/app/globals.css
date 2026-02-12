@@ -1089,6 +1089,33 @@
     transform: scale(1) rotate(0deg);
     opacity: 1;
   }
+
+  /*
+  ------------------------------
+  Image Gallery Component
+  ------------------------------
+  */
+  .image-gallery__thumb-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border-subtle);
+    background: var(--color-bg-surface);
+    color: var(--color-text-primary);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+  
+  .image-gallery__thumb-arrow:hover {
+    background: var(--color-bg-muted);
+    transform: translateY(-1px);
+  }
+  
+  .image-gallery__thumb-arrow:active {
+    transform: translateY(0);
+  }
 }
 
 @layer utilities {
