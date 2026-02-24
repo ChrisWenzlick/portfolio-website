@@ -7,17 +7,17 @@ interface SkillGroupProps {
 
 export default function SkillGroup({ group }: SkillGroupProps) {
     return (
-        <div className="skill-group">
-            <div className="skill-group__header">
-                <h3 className="skill-group__title">{group.title}</h3>
+        <div className="flex flex-col gap-3">
+            <div>
+                <h3 className="text-lg font-semibold">{group.title}</h3>
                 {group.description && (
-                    <p className="skill-group__description">
+                    <p className="text-sm text-(--color-text-muted)">
                         {group.description}
                     </p>
                 )}
             </div>
 
-            <div className="skill-group__badges">
+            <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                     <SkillBadge key={skill.name} name={skill.name} />
                 ))}

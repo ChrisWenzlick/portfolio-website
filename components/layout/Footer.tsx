@@ -2,22 +2,22 @@ import Section from "../layout/Section"
 
 export default function Footer() {
     return (
-        <footer className="site-footer">
-            <Section className="site-footer__section">
-                <div className="site-footer__top">
+        <footer className="border-t border-solid border-(--color-border-subtle)">
+            <Section className="w-full py-4 sm:py-5 lg:py-6">
+                <div className="flex flex-col gap-6 sm:flex-row items-center justify-between">
                     {/* Identity */}
-                    <div className="site-footer__identity">
-                        <p className="site-footer__name">Christopher Wenzlick</p>
-                        <p className="site-footer__role">Software Engineer</p>
+                    <div>
+                        <p className="font-semibold">Christopher Wenzlick</p>
+                        <p className="text-sm text-(--color-text-muted)">Software Engineer</p>
                     </div>
 
                     {/* Links */}
-                    <nav className="site-footer__nav">
+                    <nav className="flex gap-4 text-sm">
                         <a
                             href="https://github.com/ChrisWenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="site-footer__link"
+                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
                         >
                             GitHub
                         </a>
@@ -26,14 +26,14 @@ export default function Footer() {
                             href="https://linkedin.com/in/christopherwenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="site-footer__link"
+                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
                         >
                             LinkedIn
                         </a>
 
                         <a
                             href="mailto:placeholder@fakemail.com"
-                            className="site-footer__link"
+                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
                         >
                             Email
                         </a>
@@ -41,7 +41,7 @@ export default function Footer() {
                 </div>
 
                 {/* Copyright */}
-                <p className="site-footer__copyright">
+                <p className="mt-8 text-xs text-(--color-text-muted)">
                     © {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.
                 </p>
             </Section>

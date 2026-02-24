@@ -10,9 +10,13 @@ export function SkillBadge({
     className?: string;
 }) {
     return (
-        <span className={cn("skill-badge", className)}>
-            {Icon && <Icon className="skill-badge__icon" aria-hidden />}
-            <span className="skill-badge__label">{name}</span>
+        <span className={cn(
+            "inline-flex items-center gap-2 py-1 px-3 rounded-md",
+            "bg-(--color-surface) border border-solid border-(--color-border)",
+            "text-sm text-(--color-text)",
+            className)}>
+            {Icon && <Icon className="w-4 h-4 opacity-80" aria-hidden />}
+            <span className="leading-none">{name}</span>
         </span>
     );
 }

@@ -80,7 +80,7 @@ export default function ImageGallery({
       {/* Main image */}
       <div
         className={cn(
-          "relative w-full overflow-hidden rounded-lg bg-[var(--color-bg-surface)]",
+          "relative w-full overflow-hidden rounded-lg bg-(--color-bg-surface)",
           sizeToHeight[size]
         )}
       >
@@ -102,7 +102,7 @@ export default function ImageGallery({
             type="button"
             aria-label="Scroll thumbnails left"
             onClick={() => scrollThumbnailsBy("left")}
-            className="image-gallery__thumb-arrow"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-solid border-(--color-border-subtle) bg-(--color-bg-surface) text-(--color-text-primary) transition-[background-color,transform] duration-150 ease-in-out hover:bg-(--color-bg-muted) hover:-translate-0.5 active:translate-y-0"
           >
             ←
           </button>
@@ -134,8 +134,8 @@ export default function ImageGallery({
                     "image-gallery__thumb",
                     "relative shrink-0 rounded-md p-1 transition",
                     isActive
-                        ? "ring-2 ring-[var(--color-primary)]"
-                        : "ring-1 ring-transparent hover:ring-[var(--color-border-subtle)]"
+                        ? "ring-2 ring-(--color-primary)"
+                        : "ring-1 ring-transparent hover:ring-(--color-border-subtle)"
                   )}
                 >
                   <div className="relative h-20 w-32 overflow-hidden rounded">
@@ -158,7 +158,7 @@ export default function ImageGallery({
             type="button"
             aria-label="Scroll thumbnails right"
             onClick={() => scrollThumbnailsBy("right")}
-            className="image-gallery__thumb-arrow"
+            className="inline-flex items-center justify-center w-9 h-9 rounded-full border border-solid border-(--color-border-subtle) bg-(--color-bg-surface) text-(--color-text-primary) transition-[background-color,transform] duration-150 ease-in-out hover:bg-(--color-bg-muted) hover:-translate-0.5 active:translate-y-0"
           >
             →
           </button>

@@ -27,22 +27,22 @@ export default function Hero({
     className,
 }: HeroProps) {
     return (
-        <section className={cn("hero", className)}>
-            <div className="hero__container">
+        <section className={cn("min-h-3/5 flex items-center py-20 w-full", className)}>
+            <div className="mx-auto w-full max-w-6xl px-4 grid gap-12 md:grid-cols-2">
                 {/* Left column (text) */}
-                <div className="hero__content">
-                    <h1 className="hero__title">{title}</h1>
+                <div className="flex flex-col justify-center gap-6">
+                    <h1 className="text-4xl md:text-5xl font-bold leading-4 tracking-tight">{title}</h1>
 
                     {subtitle && (
-                        <p className="hero__subtitle">{subtitle}</p>
+                        <p className="text-xl text-(--color-text-muted) leading-relaxed">{subtitle}</p>
                     )}
 
                     {description && (
-                        <p className="hero__description">{description}</p>
+                        <p className="text-(--color-text-muted)">{description}</p>
                     )}
 
                     {ctas.length > 0 && (
-                        <div className="hero__actions">
+                        <div className="flex flex-wrap gap-4 pt-2">
                             {ctas.map((cta, i) => (
                                 <Button
                                     key={i}
@@ -59,11 +59,11 @@ export default function Hero({
 
                 {/* Right column (image) */}
                 {image && (
-                    <div className="hero__media">
+                    <div className="relative flex items-center justify-center">
                         <Card
                             radius="lg"
                             shadow="md"
-                            className="hero__media-card"
+                            className="relative aspect-square w-full max-w-sm overflow-hidden"
                         >
                             <Image
                                 src={image}

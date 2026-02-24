@@ -19,7 +19,7 @@ export function SectionHeading({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
     return (
         <h2
-            className={cn("section-heading", className)}
+            className={cn("font-heading font-bold tracking-tight mb-6 text-2xl sm:text-3xl leading-tight", className)}
             {...props}
         />
     );

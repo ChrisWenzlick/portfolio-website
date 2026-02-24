@@ -20,19 +20,19 @@ export default function ProjectCard({
     className,
 }: ProjectCardProps) {
     return (
-        <Card className={cn("project-card", className)} hoverable bordered>
+        <Card shadow="sm" radius="md" className={cn("h-full flex flex-col bg-(--color-surface) text-(--color-text)", className)} hoverable bordered>
             <CardMedia src={image} label={label} />
 
             <CardHeader>
-                <h3 className="project-card__title">{title}</h3>
+                <h3 className="text-lg font-semibold leading-tight">{title}</h3>
             </CardHeader>
 
             <CardContent>
-                <p className="project-card__description">{description}</p>
+                <p className="text-sm text-(--color-text-muted) line-clamp-3">{description}</p>
             </CardContent>
 
             {skills.length > 0 && (
-                <CardFooter className="project-card__footer">
+                <CardFooter className="flex flex-wrap gap-2">
                     {skills.map((skill, i) => (
                         <Badge key={i} size="sm" variant="subtle">
                             {skill}

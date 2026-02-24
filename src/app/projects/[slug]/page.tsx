@@ -34,12 +34,12 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         return (
             <article className="mx-auto max-w-4xl px-4 py-12">
                 {/* Header */}
-                <header className="mb-10 space-y-4">
+                <header className="mb-10 space-y-4 bg-(--color-primary) text-(--color-primary-contrast)">
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
                         {metadata.title}
                     </h1>
                     {metadata.description && (
-                        <p className="max-w-2xl text-lg text-[var(--color-text-secondary)]">
+                        <p className="max-w-2xl text-lg text-(--color-text-secondary)">
                             {metadata.description}
                         </p>
                     )}
