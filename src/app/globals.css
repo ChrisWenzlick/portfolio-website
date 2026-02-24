@@ -164,45 +164,8 @@
 }
 
 @layer components {
-
   section {
     @apply flex flex-col items-center w-full py-16 px-6 md:px-12 max-w-6xl mx-auto;
-  }
-
-  /*
-  ------------------------------
-  Dark Mode Toggle Component
-  ------------------------------
-  */
-  .theme-toggle {
-    @apply w-10 h-10 rounded-full inline-flex items-center justify-center bg-accent-300 transition-[transform,background-color] duration-200 ease-in-out relative hover:scale-105
-  }
-  
-  .dark .theme-toggle {
-    @apply bg-accent-800
-  }
-  
-  .theme-toggle__icon {
-    @apply absolute flex items-center justify-center transition-[transform,opacity] duration-700 ease-in-out
-  }
-  
-  /* Sun visible in light mode */
-  .theme-toggle__icon--sun {
-    @apply transform scale-100 rotate-0 opacity-100
-  }
-  
-  /* Moon hidden in light mode */
-  .theme-toggle__icon--moon {
-    @apply transform scale-0 -rotate-180 opacity-0
-  }
-  
-  /* When dark mode is active, swap them */
-  .theme-toggle--dark .theme-toggle__icon--sun {
-    @apply transform scale-0 rotate-180 opacity-0
-  }
-  
-  .theme-toggle--dark .theme-toggle__icon--moon {
-    @apply transform scale-100 rotate-0 opacity-100
   }
 }
 
