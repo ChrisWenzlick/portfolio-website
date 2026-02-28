@@ -14,6 +14,13 @@ interface ProjectsPageProps {
 
 const PAGE_SIZE = 5;
 
+// Get a list of all skills across all projects
+const allSkills = Array.from(
+    new Set(
+        projects.flatMap((project) => project.skills ?? [])
+    )
+).sort((a, b) => a.localeCompare(b));
+
 export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
   const search = searchParams.search?.toLowerCase() ?? "";
   const selectedSkills = searchParams.skills
@@ -95,6 +102,7 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
         <ProjectFilters
           search={search}
           selectedSkills={selectedSkills}
+          allSkills={allSkills}
         />
 
         <div className="space-y-8">

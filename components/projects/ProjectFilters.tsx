@@ -1,21 +1,31 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 interface Props {
   search: string;
   selectedSkills: string[];
+  allSkills: string[];
 }
 
 export default function ProjectFilters({
   search,
   selectedSkills,
+  allSkills,
 }: Props) {
   const router = useRouter();
   const params = useSearchParams();
 
   const [searchValue, setSearchValue] = useState(search);
+  const [skillQuery, setSkillQuery] = useState("");
+  const [open, setOpen] = useState(false);
+
+  const filteredSkills = useMemo(() => {
+    return allSkills.filter((skill) =>
+      skill.toLowerCase().includes(skillQuery.toLowerCase())
+    );
+  }, [skillQuery, allSkills]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -38,19 +48,82 @@ export default function ProjectFilters({
     router.replace(`/projects?${current.toString()}`, { scroll: false });
   }
 
+  function toggleSkill(skill: string) {
+    const updated = selectedSkills.includes(skill)
+      ? selectedSkills.filter((s) => s !== skill)
+      : [...selectedSkills, skill];
+
+      updateParams({
+        skills: updated.length ? updated.join(",") : undefined,
+      });
+  }
+
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+    <div className="space-y-4">
+      {/* Search Input */}
       <input
         type="text"
         value={searchValue}
         onChange={(e) => {
           setSearchValue(e.target.value);
+          updateParams({ search: e.target.value });
         }}
         placeholder="Search projects..."
         className="w-full md:w-80 rounded-md border px-3 py-2"
       />
 
-      {/* Skill filters can go here next */}
+      {/* Selected Skill Chips */}
+      {selectedSkills.length > 0 && (
+        <div className="flex flex-wrap gap-2">
+          {selectedSkills.map((skill) => (
+            <button
+              key={skill}
+              onClick={() => toggleSkill(skill)}
+              className="rounded-full bg-muted px-3 py-1 text-sm"
+            >
+              {skill} ×
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* Skill Dropdown */}
+      <div className="relative">
+        <button
+          onClick={() => setOpen(!open)}
+          className="rounded-md border px-4 py-2 text-sm"
+        >
+          + Add Skill
+        </button>
+
+        {open && (
+          <div className="absolute z-10 mt-2 w-64 rounded-md border bg-background p-3 shadow-lg space-y-2">
+            <input
+              type="text"
+              placeholder="Filter skills..."
+              value={skillQuery}
+              onChange={(e) => setSkillQuery(e.target.value)}
+              className="w-full rounded-md border px-2 py-1 text-sm"
+            />
+
+            <div className="max-h-48 overflow-y-auto space-y-1">
+              {filteredSkills.map((skill) => (
+                <button
+                  key={skill}
+                  onClick={() => toggleSkill(skill)}
+                  className={`w-full text-left px-2 py-1 rounded text-sm hover:bg-muted ${
+                    selectedSkills.includes(skill)
+                      ? "font-semibold"
+                      : ""
+                  }`}
+                >
+                  {skill}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

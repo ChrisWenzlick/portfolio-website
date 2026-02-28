@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Badge from "components/ui/Badge";
+import { cn } from "@/lib/utils";
 
 interface ProjectListItemProps {
   project: {
@@ -19,10 +20,13 @@ export default function ProjectListItem({
 }: ProjectListItemProps) {
   return (
     <article
-      className={`grid gap-6 items-stretch bg-(--color-surface) border border-solid border-(--color-border) rounded-lg overflow-hidden ${imagePosition === 'right' ? 'md:grid-cols-[1.5fr_1fr]' : 'md:grid-cols-[1fr_1.5fr]'}`}
+    className={`grid gap-6 items-stretch bg-(--color-surface) border border-solid border-(--color-border) rounded-lg overflow-hidden ${imagePosition === 'right' ? 'md:grid-cols-[1.5fr_1fr]' : 'md:grid-cols-[1fr_1.5fr]'}`}
     >
       {project.image && (
-        <div className="relative min-h-52">
+        <div className={cn(
+          'relative min-h-52',
+          imagePosition === 'right' ? 'md:order-2' : ""
+        )}>
           <Image
             src={project.image}
             alt={project.title}
@@ -32,7 +36,10 @@ export default function ProjectListItem({
         </div>
       )}
 
-      <div className="py-4 px-5 flex flex-col gap-3">
+      <div className={cn(
+        "py-4 px-5 flex flex-col gap-3",
+        imagePosition === 'right' ? 'md:order-1' : ""
+      )}>
         <h3 className="text-lg font-semibold">
           <Link href={`/projects/${project.slug}`}>{project.title}</Link>
         </h3>
