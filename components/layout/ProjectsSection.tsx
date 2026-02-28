@@ -1,12 +1,11 @@
 import Link from "next/link";
 import ProjectCard from "../ui/ProjectCard";
-import Section, { SectionHeading } from "./Section";
 import { projects } from "@/content";
 
 export function ProjectsSection() {
     return (
-        <Section id="projects" className="projects-section w-full py-4 sm:py-5 lg:py-6">
-            <SectionHeading>Projects</SectionHeading>
+        <section id="projects" className="projects-section">
+            <h2>Projects</h2>
             <div className="grid items-stretch sm:gap-3 sm:grid-cols-2 md:gap-6 lg:gap-8 lg:grid-cols-3">
                 {projects.map((project) => (
                     <Link
@@ -25,6 +24,6 @@ export function ProjectsSection() {
                     </Link>
                 ))}
             </div>
-        </Section>
+        </section>
     );
 }

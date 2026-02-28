@@ -1,5 +1,4 @@
 import { projects } from "@/content";
-import Section, { SectionHeading } from "components/layout/Section";
 import ProjectCard from "components/ui/ProjectCard";
 import Link from "next/link";
 
@@ -9,8 +8,8 @@ export default function Home() {
             <h1>My Projects</h1>
             <p>Here are some of the things I&apos;ve built</p>
             {/* Featured Projects */}
-            <Section id="projects" className="projects-section w-full py-4 sm:py-5 lg:py-6">
-                <SectionHeading>Projects</SectionHeading>
+            <section id="projects" className="projects-section">
+                <h2>Projects</h2>
                 <div className="grid items-stretch sm:gap-3 sm:grid-cols-2 md:gap-6 lg:gap-8 lg:grid-cols-3">
                     <div>Test1</div>
                     <div>Test2</div>
@@ -35,7 +34,7 @@ export default function Home() {
                             </Link>
                         ))}
                 </div>
-            </Section>
+            </section>
 
             {/* All Projects */}
         </main>

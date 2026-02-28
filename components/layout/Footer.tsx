@@ -1,9 +1,7 @@
-import Section from "../layout/Section"
-
 export default function Footer() {
     return (
         <footer className="border-t border-solid border-(--color-border-subtle)">
-            <Section className="w-full py-4 sm:py-5 lg:py-6">
+            <section>
                 <div className="flex flex-col gap-6 sm:flex-row items-center justify-between">
                     {/* Identity */}
                     <div>
@@ -44,7 +42,7 @@ export default function Footer() {
                 <p className="mt-8 text-xs text-(--color-text-muted)">
                     © {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.
                 </p>
-            </Section>
+            </section>
         </footer>
     );
 }

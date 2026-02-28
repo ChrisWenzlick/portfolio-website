@@ -1,11 +1,10 @@
 import Card, { CardContent, CardFooter } from "../ui/Card";
-import Section, { SectionHeading } from "../layout/Section";
 import { testimonials } from "../../src/content/testimonials";
 
 export default function TestimonialsSection() {
     return (
-        <Section className="w-full py-4 sm:py-5 lg:py-6">
-            <SectionHeading>What People Say</SectionHeading>
+        <section>
+            <h2>What People Say</h2>
 
             <p className="mt-2 max-w-2xl text-(--color-text-muted)">
                 A few words from people I&apos;ve worked with across different teams and projects.
@@ -30,6 +29,6 @@ export default function TestimonialsSection() {
                     </Card>
                 ))}
             </div>
-        </Section>
+        </section>
     );
 }
