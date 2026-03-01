@@ -103,7 +103,7 @@ export default async function ProjectsPage({
       )}
 
       {/* All Projects */}
-      <section className="space-y-8">
+      <section id="projects-list" className="space-y-8">
         <h2 className="text-2xl font-semibold">
           All Projects
         </h2>
