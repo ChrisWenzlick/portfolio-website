@@ -21,12 +21,21 @@ const allSkills = Array.from(
     )
 ).sort((a, b) => a.localeCompare(b));
 
-export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
-  const search = searchParams.search?.toLowerCase() ?? "";
-  const selectedSkills = searchParams.skills
-    ? searchParams.skills.split(",")
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    search?: string;
+    skills?: string;
+    page?: string;
+  }>
+}) {
+  const params = await searchParams;
+  const search = params.search?.toLowerCase() ?? "";
+  const selectedSkills = params.skills
+    ? params.skills.split(",")
     : [];
-  const currentPage = Number(searchParams.page ?? "1");
+  const currentPage = Number(params.page ?? "1");
 
   // Filter
   const filteredProjects = projects.filter((project) => {
@@ -105,17 +114,36 @@ export default function ProjectsPage({ searchParams }: ProjectsPageProps) {
           allSkills={allSkills}
         />
 
-        <div className="space-y-8">
-          {paginatedProjects.map((project, index) => (
-            <ProjectListItem
-              key={project.slug}
-              project={project}
-              imagePosition={
-                index % 2 === 0 ? "left" : "right"
-              }
-            />
-          ))}
-        </div>
+        <p className="text-sm text-muted-foreground mb-4">
+          Showing {paginatedProjects.length} of {filteredProjects.length} projects
+        </p>
+
+        {/* Projects List */}
+        {filteredProjects.length === 0 ? (
+          /* No projects found */
+          <div className="py-16 text-center">
+            <p className="text-lg font-medium">
+              No projects match your filters.
+            </p>
+
+            <p className="mt-2 text-sm text-muted-foreground">
+              Try adjusting your search or selected skills.
+            </p>
+          </div>
+        ) : (
+          /* List the projects */
+          <div className="space-y-8">
+            {paginatedProjects.map((project, index) => (
+              <ProjectListItem
+                key={project.slug}
+                project={project}
+                imagePosition={
+                  index % 2 === 0 ? "left" : "right"
+                }
+              />
+            ))}
+          </div>
+        )}
 
         <ProjectPagination
           currentPage={currentPage}
