@@ -17,7 +17,7 @@ export const projects: Project[] = [
             "A clean, SEO-focused portfolio built with Next.js, Tailwind CSS, and a reusable component system.",
         image: "/bench.jpg",
         label: "Featured",
-        skills: ["Next.js", "Tailwind", "TypeScript"],
+        skills: ["nextjs", "tailwind", "typescript"],
         href: "#",
         featured: true,
     },
@@ -27,7 +27,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/desk.jpg",
-        skills: ["HTML", "CSS", "JavaScript"],
+        skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
     },
@@ -37,7 +37,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/fence.jpg",
-        skills: ["Angular", "React", "TypeScript"],
+        skills: ["angular", "react", "typescript"],
         href: "#",
         featured: true,
     },
@@ -47,7 +47,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/jellyfish.jpg",
-        skills: ["C++", "Linux"],
+        skills: ["cplusplus", "linux"],
         href: "#",
         featured: true,
     },
@@ -57,7 +57,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/people.jpg",
-        skills: ["C#", ".NET Core", ".NET Framework"],
+        skills: ["csharp", "dotnetcore", "dotnetframework"],
         href: "#",
         featured: true,
     },
@@ -67,7 +67,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/trees.jpg",
-        skills: ["C#", ".NET Core", "SQL Server"],
+        skills: ["csharp", "dotnetcore", "sqlserver"],
         href: "#",
         featured: true,
     },
@@ -77,7 +77,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/typewriter.jpg",
-        skills: ["Java"],
+        skills: ["java"],
         href: "#",
         featured: true,
     },
@@ -87,7 +87,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/waves.jpg",
-        skills: ["JSON", "XML"],
+        skills: ["json", "xml"],
         href: "#",
         featured: true,
     },
@@ -97,7 +97,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/bench.jpg",
-        skills: ["HTML", "CSS", "JavaScript"],
+        skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
     },
@@ -107,7 +107,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/desk.jpg",
-        skills: ["HTML", "CSS", "JavaScript"],
+        skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
     },
@@ -117,7 +117,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/fence.jpg",
-        skills: ["HTML", "CSS", "JavaScript"],
+        skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
     },
@@ -127,7 +127,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/jellyfish.jpg",
-        skills: ["HTML", "CSS", "JavaScript"],
+        skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
     },

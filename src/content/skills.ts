@@ -14,20 +14,38 @@ export interface SkillGroup {
 
 export const skills: Skill[] = [
     { name: ".NET", category: "Backend", slug: "dotnet" },
+    { name: ".NET Core", category: "Backend", slug: "dotnetcore" },
+    { name: ".NET Framework", category: "Backend", slug: "dotnetframework" },
     { name: "C#", category: "Backend", slug: "csharp" },
-    { name: "ASP.NET Core", category: "Backend", slug: "aspnet-core" },
-    { name: "Entity Framework", category: "Backend", slug: "entity-framework" },
+    { name: "Entity Framework", category: "Backend", slug: "entityframework" },
+    { name: "C++", category: "Backend", slug: "cplusplus" },
+    { name: "Java", category: "Backend", slug: "java" },
 
     { name: "React", category: "Frontend", slug: "react" },
     { name: "Next.js", category: "Frontend", slug: "nextjs" },
     { name: "Tailwind CSS", category: "Frontend", slug: "tailwind" },
+    { name: "HTML", category: "Frontend", slug: "html" },
+    { name: "CSS", category: "Frontend", slug: "css" },
+    { name: "Angular", category: "Frontend", slug: "angular" },
+    { name: "React", category: "Frontend", slug: "react" },
+
+    { name: "TypeScript", category: "Full-Stack", slug: "typescript" },
+    { name: "JavaScript", category: "Full-Stack", slug: "javascript" },
 
     { name: "PostgreSQL", category: "Database", slug: "postgresql" },
-    { name: "SQL Server", category: "Database", slug: "sql-server" },
+    { name: "SQL Server", category: "Database", slug: "sqlserver" },
 
     { name: "Azure", category: "Cloud", slug: "azure" },
     { name: "Docker", category: "DevOps", slug: "docker" },
+
+    { name: "Linux", category: "Environments / OS", slug: "linux" },
+
+    { name: "JSON", category: "Data", slug: "json" },
+    { name: "XML", category: "Data", slug: "xml" },
 ]
+
+export const skillMap: Record<string, Skill> =
+    Object.fromEntries(skills.map(s => [s.slug, s]));
 
 export const skillGroups: SkillGroup[] = [
     {
