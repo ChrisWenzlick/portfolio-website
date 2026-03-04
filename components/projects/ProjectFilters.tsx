@@ -1,5 +1,6 @@
 "use client";
 
+import { skillMap } from "@/content/skills";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 
@@ -23,7 +24,8 @@ export default function ProjectFilters({
 
   const filteredSkills = useMemo(() => {
     return allSkills.filter((skill) =>
-      skill.toLowerCase().includes(skillQuery.toLowerCase())
+      skill.toLowerCase().includes(skillQuery.toLowerCase()) ||
+      skillMap[skill].name.toLowerCase().includes(skillQuery.toLowerCase())
     );
   }, [skillQuery, allSkills]);
 
@@ -81,7 +83,7 @@ export default function ProjectFilters({
               onClick={() => toggleSkill(skill)}
               className="rounded-full bg-muted px-3 py-1 text-sm"
             >
-              {skill} ×
+              {skillMap[skill].name} ×
             </button>
           ))}
         </div>
@@ -117,7 +119,7 @@ export default function ProjectFilters({
                       : ""
                   }`}
                 >
-                  {skill}
+                  {skillMap[skill].name}
                 </button>
               ))}
             </div>

@@ -3,6 +3,7 @@ import ProjectCard from "components/ui/ProjectCard";
 import ProjectListItem from "components/projects/ProjectListItem";
 import ProjectFilters from "components/projects/ProjectFilters";
 import ProjectPagination from "components/projects/ProjectPagination";
+import { skillMap } from "@/content";
 
 interface ProjectsPageProps {
   searchParams: {
@@ -43,8 +44,9 @@ export default async function ProjectsPage({
       !search ||
       project.title.toLowerCase().includes(search) ||
       project.description.toLowerCase().includes(search) ||
-      project.skills?.some((skill) =>
-        skill.toLowerCase().includes(search)
+      project.skills?.some((skillSlug) =>
+        skillMap[skillSlug].name
+        .toLowerCase().includes(search)
       );
 
     const matchesSkills =
