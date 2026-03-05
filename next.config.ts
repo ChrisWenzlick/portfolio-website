@@ -5,12 +5,21 @@ const nextConfig = {
   // Configure `pageExtensions` to include markdown and MDX files
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
   // Optionally, add any other Next.js config below
-}
+  webpack(config: { module: { rules: { test: RegExp; issuer: RegExp; use: string[]; }[]; }; }) {
+    config.module.rules.push({
+      test: /\.svg$/,
+      issuer: /\.[jt]sx?$/,
+      use: ["@svgr/webpack"],
+    });
+
+    return config;
+  },
+};
  
 const withMDX = createMDX({
   // Add markdown plugins here, as desired
   extension: /\.(md|mdx)$/,
-})
+});
  
 // Merge MDX config with Next.js config
-export default withMDX(nextConfig)
+export default withMDX(nextConfig);

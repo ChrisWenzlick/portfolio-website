@@ -9,12 +9,11 @@ interface IconProps {
 }
 
 export function Icon({ name = "", size = 20, className }: IconProps) {
-    const isDark = document.documentElement.classList.contains('dark');
-    const src = isDark ? `/svg/${name}.svg` : `/svg/${name}-light.svg`
+    const src = `/svg/${name}.svg`
 
     if (name === "")
         return
-    
+
     return (
         <Image
             src={src}
