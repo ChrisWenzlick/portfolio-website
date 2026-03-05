@@ -1,5 +1,6 @@
 
 import { skills } from "@/content"
+import { Icon } from "components/icons/Icon"
 import Link from "next/link"
 
 export default function SkillsPage() {
@@ -35,6 +36,7 @@ export default function SkillsPage() {
                   href={`/projects?skills=${skill.slug}#projects-list`}
                   className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
                 >
+                  <Icon name={skill.iconName} />
                   {skill.name}
                 </Link>
               ))}

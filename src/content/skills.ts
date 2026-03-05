@@ -2,7 +2,7 @@ export interface Skill {
     name: string;
     category: string;
     slug: string;
-    icon?: string;      // path to SVG
+    iconName?: string;
 }
 
 export interface SkillGroup {
