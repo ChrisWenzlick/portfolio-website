@@ -23,14 +23,14 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
         )}>
             <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Brand / Logo */}
-                <Link href="/" className="text-xl font-bold flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)">
+                <Link href="/" className="text-xl font-bold flex items-center justify-center rounded-full h-10 cursor-pointer px-4 transition-colors hover:bg-(--color-primary-hover)">
                     CW
                 </Link>
 
                 {/* Desktop links */}
                 <div className="hidden items-center gap-6 md:flex">
                     {NAV_LINKS.map(({ href, label }) => (
-                        <Link key={href} href={href} className="text-sm font-medium flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 transition-colors duration-200 ease-in-out hover:bg-(--color-primary-contrast) hover:text-(--color-primary)">
+                        <Link key={href} href={href} className="text-sm font-medium flex items-center justify-center rounded-(--radius-lg) h-10 cursor-pointer px-4 transition-colors duration-200 ease-in-out hover:bg-(--color-primary-hover)">
                             {label}
                         </Link>
                     ))}

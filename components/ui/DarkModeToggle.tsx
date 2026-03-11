@@ -25,7 +25,7 @@ export default function DarkModeToggle() {
     return (
         <button
           onClick={toggleTheme}
-          className="w-10 h-10 rounded-full inline-flex items-center justify-center bg-(--color-primary-contrast) transition-[transform,background-color] duration-200 ease-in-out relative hover:scale-105"
+          className="w-10 h-10 rounded-full inline-flex items-center justify-center transition-transform duration-200 ease-in-out relative hover:scale-105 hover:bg-(--color-primary-hover)"
           aria-label="Toggle theme"
         >
           {/* Sun icon */}

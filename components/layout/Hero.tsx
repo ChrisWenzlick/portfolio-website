@@ -31,7 +31,7 @@ export default function Hero({
             <div className="mx-auto w-full max-w-6xl px-4 grid gap-12 md:grid-cols-2">
                 {/* Left column (text) */}
                 <div className="flex flex-col justify-center gap-6">
-                    <h1 className="text-4xl md:text-5xl font-bold leading-4 tracking-tight">{title}</h1>
+                    <h1 className="text-5xl md:text-6xl font-bold tracking-tight">{title}</h1>
 
                     {subtitle && (
                         <p className="text-xl text-(--color-text-muted) leading-relaxed">{subtitle}</p>
