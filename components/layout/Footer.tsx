@@ -1,6 +1,8 @@
 export default function Footer() {
+    const currentYear = new Date().getFullYear();
+
     return (
-        <footer className="border-t border-solid border-(--color-border-subtle)">
+        <footer className="bg-(--color-primary)/80 backdrop-blur-sm">
             <section>
                 <div className="flex flex-col gap-6 sm:flex-row items-center justify-between">
                     {/* Identity */}
@@ -15,7 +17,7 @@ export default function Footer() {
                             href="https://github.com/ChrisWenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
+                            className="text-(--color-text-muted) hover:text-(--color-text) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors"
                         >
                             GitHub
                         </a>
@@ -24,14 +26,14 @@ export default function Footer() {
                             href="https://linkedin.com/in/christopherwenzlick"
                             target="_blank"
                             rel="noreferrer"
-                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
+                            className="text-(--color-text-muted) hover:text-(--color-text) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors"
                         >
                             LinkedIn
                         </a>
 
                         <a
                             href="mailto:placeholder@fakemail.com"
-                            className="text-(--color-text-muted) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)"
+                            className="text-(--color-text-muted) hover:text-(--color-text) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors"
                         >
                             Email
                         </a>
@@ -40,7 +42,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <p className="mt-8 text-xs text-(--color-text-muted)">
-                    © {new Date().getFullYear()} Christopher Wenzlick. All rights reserved.
+                    © {currentYear} Christopher Wenzlick. All rights reserved.
                 </p>
             </section>
         </footer>
