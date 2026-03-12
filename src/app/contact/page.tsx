@@ -1,18 +1,18 @@
 export default function ContactPage() {
     return (
-      <main className="container mx-auto px-6 py-16 space-y-16 text-center">
-        <header className="space-y-4 max-w-2xl">
-          <h1 className="text-4xl font-bold tracking-tight">
+      <main className="container mx-auto px-6 py-16 space-y-16">
+        <header className="space-y-4 max-w-2xl mx-auto">
+          <h1 className="text-4xl text-center font-bold tracking-tight">
             Contact
           </h1>
   
-          <p className="text-muted-foreground">
+          <p className="text-muted-foreground text-center">
             If you’d like to discuss opportunities, collaborations, or have
             questions about my work, feel free to reach out.
           </p>
         </header>
   
-        <section className="max-w-2xl space-y-6">
+        <section className="max-w-2xl space-y-6 text-center">
           <div className="space-y-2">
             <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
               Email
