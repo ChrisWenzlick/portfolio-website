@@ -1,6 +1,6 @@
 export default function ContactPage() {
     return (
-      <main className="container mx-auto px-6 py-16 space-y-16">
+      <main className="container mx-auto px-6 py-16 space-y-16 text-center">
         <header className="space-y-4 max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight">
             Contact
