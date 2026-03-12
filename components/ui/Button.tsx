@@ -26,7 +26,7 @@ export default function Button({
     );
 
     const variantStyles = {
-        primary: 'bg-(--color-primary) text-(--color-primary-text) hover:bg-(--color-primary-contrast)',
+        primary: 'bg-(--color-primary) text-(--color-primary-text) hover:bg-(--color-primary-hover)',
         outline: 'bg-transparent text-(--color-primary) border-2 border-solid border-(--color-primary) hover:bg-(--color-primary)/10',
         ghost: 'bg-transparent text-(--color-primary) hover:bg-(--color-primary)/10',
     };

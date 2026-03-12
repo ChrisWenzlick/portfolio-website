@@ -27,7 +27,7 @@ export default function Hero({
     className,
 }: HeroProps) {
     return (
-        <section className={cn("min-h-3/5 flex items-center py-20 w-full", className)}>
+        <section className={cn("min-h-3/5 py-20", className)}>
             <div className="mx-auto w-full max-w-6xl px-4 grid gap-12 md:grid-cols-2">
                 {/* Left column (text) */}
                 <div className="flex flex-col justify-center gap-6">
