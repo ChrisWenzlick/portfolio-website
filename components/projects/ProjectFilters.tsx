@@ -71,7 +71,7 @@ export default function ProjectFilters({
           updateParams({ search: e.target.value });
         }}
         placeholder="Search projects..."
-        className="w-full md:w-80 rounded-md border px-3 py-2"
+        className="w-full md:w-80 rounded-md border px-3 py-2 bg-(--color-bg)"
       />
 
       {/* Selected Skill Chips */}
@@ -93,13 +93,13 @@ export default function ProjectFilters({
       <div className="relative">
         <button
           onClick={() => setOpen(!open)}
-          className="rounded-md border px-4 py-2 text-sm"
+          className="rounded-md border px-4 py-2 text-sm bg-(--color-bg)"
         >
           + Add Skill
         </button>
 
         {open && (
-          <div className="absolute z-10 mt-2 w-64 rounded-md border bg-background p-3 shadow-lg space-y-2">
+          <div className="absolute z-10 mt-2 w-64 rounded-md border bg-(--color-bg) p-3 shadow-lg space-y-2">
             <input
               type="text"
               placeholder="Filter skills..."
