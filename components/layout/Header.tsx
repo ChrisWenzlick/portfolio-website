@@ -40,7 +40,7 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
                 {/* Mobile menu button */}
                 <button
                     onClick={() => setOpen((prev) => !prev)}
-                    className="inline-flex items-center justify-center p-2 rounded-md hover:bg-(--color-surface) md:hidden"
+                    className="inline-flex items-center justify-center p-2 rounded-md hover:bg-(--color-primary-hover) md:hidden"
                 >
                     <span className="sr-only">Toggle menu</span>
                     <div className="h-4 w-6 flex flex-col justify-between">
@@ -53,13 +53,13 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
 
             {/* Mobile dropdown */}
             {open && (
-                <div className="border-t border-(--color-border) border-solid bg-(--color-bg) shadow-sm md:hidden">
-                    <div className="px-4 py-2 flex flex-col gap-2">
+                <div className="border-y border-(--color-border) border-solid bg-(--color-primary/80) shadow-sm md:hidden">
+                    <div className="py-2 flex flex-col items-center gap-2">
                         {NAV_LINKS.map(({ href, label }) => (
                             <Link
                                 key={href}
                                 href={href}
-                                className="block py-1 text-sm font-medium transition-colors duration-200 ease-in-out hover:text-(--color-primary)"
+                                className="block w-full text-center py-1 text-sm font-medium transition-colors duration-200 ease-in-out text-(--color-text) hover:text-(--color-text-hover) hover:bg-(--color-primary-hover)"
                                 onClick={() => setOpen(false)}
                             >
                                 {label}
