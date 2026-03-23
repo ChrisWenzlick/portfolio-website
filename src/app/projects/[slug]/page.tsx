@@ -4,6 +4,7 @@ import fs from "fs";
 import ImageGallery from "components/ui/ImageGallery";
 import ProjectMeta from "components/layout/ProjectMeta";
 import { MDXComponents } from "components/util/MDXComponents";
+import Carousel from "components/ui/Carousel";
 
 interface ProjectPageProps {
     params: { slug: string };
@@ -31,6 +32,24 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         // images?: { src: string; alt?: string }[]
         const images = metadata.images ?? [];
 
+        const items = [
+            <img key="1" alt="one" src="/bench.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <img key="2" alt="two" src="/fencs.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <div key="3" className="bg-blue-500 text-white flex items-center justify-center w-full h-full rounded-xl">
+              Custom Content
+            </div>,
+            <img key="4" alt="one" src="/bench.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <img key="5" alt="two" src="/fencs.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <div key="6" className="bg-blue-500 text-white flex items-center justify-center w-full h-full rounded-xl">
+              Custom Content
+            </div>,
+            <img key="7" alt="one" src="/bench.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <img key="8" alt="two" src="/fencs.jpg" className="w-full h-full object-cover rounded-xl" />,
+            <div key="9" className="bg-blue-500 text-white flex items-center justify-center w-full h-full rounded-xl">
+              Custom Content
+            </div>,
+          ];
+
         return (
             <article className="mx-auto max-w-4xl px-4 py-12">
                 {/* Header */}
@@ -50,6 +69,17 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                         live={metadata.live}
                     />
                 </header>
+
+                {/* Carousel Test */}
+                <div className="flex justify-center items-center min-h-40">
+                    <Carousel
+                        items={items}
+                        autoRotate
+                        autoRotateInterval={2500}
+                        pauseOnHover
+                        navType="thumbnails"
+                    />
+                </div>
 
                 {/* Image Gallery */}
                 {images.length > 0 && (
