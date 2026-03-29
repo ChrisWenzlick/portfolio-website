@@ -196,7 +196,7 @@
 
   /* Body Text */
   p {
-    @apply leading-relaxed;
+    @apply leading-relaxed mb-4;
   }
 
   /* Metadata */

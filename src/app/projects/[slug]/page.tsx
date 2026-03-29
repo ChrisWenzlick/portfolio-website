@@ -33,15 +33,15 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         const images = metadata.images ?? [];
 
         return (
-            <article className="mx-auto max-w-4xl px-4 py-12">
+            <article className="mx-auto max-w-10/12 px-4 py-12">
                 {/* Header */}
-                <header className="mb-10 space-y-4 bg-(--color-primary) text-(--color-primary-contrast)">
-                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">
+                <header className="mb-10 space-y-4 text-(--color-primary-contrast) flex flex-col items-center">
+                    <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-center">
                         {metadata.title}
                     </h1>
-                    {metadata.description && (
-                        <p className="max-w-2xl text-lg text-(--color-text-secondary)">
-                            {metadata.description}
+                    {metadata.summary && (
+                        <p className="max-w-2xl text-lg text-(--color-text-secondary) text-center">
+                            {metadata.summary}
                         </p>
                     )}
 
@@ -74,7 +74,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 )}
                 
                 {/* Main Content */}
-                <div className="prose prose-neutral dark:prose-invert max-w-none">
+                <div className="prose prose-neutral dark:prose-invert max-w-none space-y-6">
                     <ProjectMdx components={MDXComponents} />
                 </div>
             </article>

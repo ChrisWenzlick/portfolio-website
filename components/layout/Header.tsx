@@ -21,7 +21,7 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
             "bg-(--color-primary)/80 backdrop-blur-sm text-(--color-text)",
             className
         )}>
-            <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <nav className="mx-auto flex h-14 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Brand / Logo */}
                 <Link href="/" className="text-xl font-bold flex items-center justify-center rounded-full h-10 cursor-pointer px-4 transition-colors hover:bg-(--color-primary-hover)">
                     CW
