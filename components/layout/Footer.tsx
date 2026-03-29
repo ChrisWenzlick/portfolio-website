@@ -4,15 +4,13 @@ export default function Footer() {
     return (
         <footer className="bg-(--color-primary)/80 backdrop-blur-sm">
             <section>
-                <div className="flex flex-col gap-6 sm:flex-row items-center justify-between">
+                <div className="flex flex-col items-center">
                     {/* Identity */}
-                    <div>
-                        <p className="font-semibold">Christopher Wenzlick</p>
-                        <p className="text-sm text-(--color-text-muted)">Software Engineer</p>
-                    </div>
+                    <div className="font-semibold">Christopher Wenzlick</div>
+                    <div className="text-sm text-(--color-text-muted)">Software Engineer</div>
 
                     {/* Links */}
-                    <nav className="flex gap-4 text-sm">
+                    <nav className="flex mt-4 gap-4 text-sm">
                         <a
                             href="https://github.com/ChrisWenzlick"
                             target="_blank"
