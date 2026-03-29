@@ -12,10 +12,12 @@ import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 
 type ScaleCarouselProps = {
   children: React.ReactNode
+  autoPlayInterval?: number
 }
 
 export default function ScaleCarousel({
   children,
+  autoPlayInterval,
 }: ScaleCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
@@ -102,8 +104,24 @@ export default function ScaleCarousel({
     })
   }, [emblaApi, onSelect, applyScale])
 
+  {/* Autoplay */}
+  const[isHovered, setIsHovered] = useState(false)
+  useEffect(() => {
+    if (!emblaApi || !autoPlayInterval) return
+    const interval = setInterval(() => {
+      if (!isHovered)
+        emblaApi.scrollNext()
+    }, autoPlayInterval)
+
+    return () => clearInterval(interval)
+  }, [emblaApi, autoPlayInterval, isHovered])
+
   return (
-    <div className="w-full max-w-6xl mx-auto">
+    <div
+      className="w-full max-w-6xl mx-auto"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Carousel */}
       <div className="relative">
         <div className="overflow-hidden" ref={emblaRef}>

@@ -1,5 +1,6 @@
 import Card, { CardContent, CardFooter } from "../ui/Card";
 import { testimonials } from "../../src/content/testimonials";
+import Carousel from "components/ui/Carousel";
 
 export default function TestimonialsSection() {
     return (
@@ -10,7 +11,7 @@ export default function TestimonialsSection() {
                 A few words from people I&apos;ve worked with across different teams and projects.
             </p>
 
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Carousel autoPlayInterval={5000}>
                 {testimonials.map((t, i) => (
                     <Card shadow="sm" radius="md" key={i} className="flex h-full">
                         <CardContent className="flex-1 pt-6">
@@ -28,7 +29,7 @@ export default function TestimonialsSection() {
                         </CardFooter>
                     </Card>
                 ))}
-            </div>
+            </Carousel>
         </section>
     );
 }
