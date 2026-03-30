@@ -1,5 +1,5 @@
 import { SkillBadge } from "../ui/SkillBadge";
-import { SkillGroup as SkillGroupType } from "@/content/skills";
+import { SkillGroup as SkillGroupType, skillMap } from "@/content/skills";
 
 interface SkillGroupProps {
     group: SkillGroupType;
@@ -18,8 +18,8 @@ export default function SkillGroup({ group }: SkillGroupProps) {
             </div>
 
             <div className="flex flex-wrap gap-2">
-                {group.skills.map((skill) => (
-                    <SkillBadge key={skill.name} name={skill.name} />
+                {group.skillSlugs.map((skillSlug) => (
+                    <SkillBadge key={skillSlug} name={skillMap[skillSlug].name} />
                 ))}
             </div>
         </div>

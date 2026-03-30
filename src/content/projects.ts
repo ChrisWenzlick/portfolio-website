@@ -4,9 +4,9 @@ export interface Project {
     description: string;
     image?: string;
     label?: string;
-    skills: string[];
+    skillSlugs: string[];
     href?: string;          // external link or internal route
-    featured: boolean;     // whether to feature on homepage
+    featured: boolean;      // whether to feature on homepage
     createdDate: Date;
     lastUpdatedDate: Date;
 }
@@ -19,7 +19,7 @@ export const projects: Project[] = [
             "A clean, SEO-focused portfolio built with Next.js, Tailwind CSS, and a reusable component system.",
         image: "/bench.jpg",
         label: "Featured",
-        skills: ["nextjs", "tailwind", "typescript"],
+        skillSlugs: ["nextjs", "tailwind", "typescript"],
         href: "#",
         featured: true,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -31,7 +31,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/desk.jpg",
-        skills: ["html", "css", "javascript"],
+        skillSlugs: ["html", "css", "javascript"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -43,7 +43,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/fence.jpg",
-        skills: ["angular", "react", "typescript"],
+        skillSlugs: ["angular", "react", "typescript"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -55,7 +55,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/jellyfish.jpg",
-        skills: ["cplusplus", "linux"],
+        skillSlugs: ["cplusplus", "linux"],
         href: "#",
         featured: true,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -67,7 +67,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/people.jpg",
-        skills: ["csharp", "dotnetcore", "dotnetframework"],
+        skillSlugs: ["csharp", "dotnetcore", "dotnetframework"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -79,7 +79,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/trees.jpg",
-        skills: ["csharp", "dotnetcore", "sqlserver"],
+        skillSlugs: ["csharp", "dotnetcore", "sqlserver"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -91,7 +91,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/typewriter.jpg",
-        skills: ["java"],
+        skillSlugs: ["java"],
         href: "#",
         featured: true,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -103,7 +103,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/waves.jpg",
-        skills: ["json", "xml"],
+        skillSlugs: ["json", "xml"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -115,7 +115,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/bench.jpg",
-        skills: ["html", "css", "javascript"],
+        skillSlugs: ["html", "css", "javascript"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -127,7 +127,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/desk.jpg",
-        skills: ["html", "css", "javascript"],
+        skillSlugs: ["html", "css", "javascript"],
         href: "#",
         featured: true,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -139,7 +139,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/fence.jpg",
-        skills: ["html", "css", "javascript"],
+        skillSlugs: ["html", "css", "javascript"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
@@ -151,7 +151,7 @@ export const projects: Project[] = [
         description:
             "A placeholder project for testing site functionality",
         image: "/jellyfish.jpg",
-        skills: ["html", "css", "javascript"],
+        skillSlugs: ["html", "css", "javascript"],
         href: "#",
         featured: false,
         createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
