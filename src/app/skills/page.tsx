@@ -1,7 +1,6 @@
 
 import { skills } from "@/content"
-import { Icon } from "components/icons/Icon"
-import Link from "next/link"
+import { SkillBadge } from "components/ui/SkillBadge"
 
 export default function SkillsPage() {
   const categories = Array.from(
@@ -32,14 +31,11 @@ export default function SkillsPage() {
               {skills
                 .filter((skill) => skill.category === category)
                 .map((skill) => (
-                  <Link
+                  <SkillBadge
                     key={skill.slug}
+                    name={skill.name}
                     href={`/projects?skills=${skill.slug}#projects-list`}
-                    className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
-                  >
-                    <Icon name={skill.iconName} />
-                    {skill.name}
-                  </Link>
+                  />
                 ))}
             </div>
           </div>

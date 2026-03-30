@@ -1,165 +1,138 @@
 import { projects } from "@/content/projects";
+import { skillMap } from "@/content/skills";
+import { Skill } from "@/content/skills";
 import ProjectCard from "components/ui/ProjectCard";
 import ProjectListItem from "components/projects/ProjectListItem";
 import ProjectFilters from "components/projects/ProjectFilters";
 import ProjectPagination from "components/projects/ProjectPagination";
-import { skillMap } from "@/content";
-
-interface ProjectsPageProps {
-  searchParams: {
-    search?: string;
-    skills?: string;
-    page?: string;
-  };
-}
 
 const PAGE_SIZE = 5;
 
-// Get a list of all skills across all projects
-const allSkills = Array.from(
-    new Set(
-        projects.flatMap((project) => project.skills ?? [])
-    )
-).sort((a, b) => a.localeCompare(b));
+// Derived once at module level — all skills actually used across projects
+const allSkills: Skill[] = Array.from(
+    new Set(projects.flatMap((p) => p.skillSlugs))
+)
+    .map((slug) => skillMap[slug])
+    .filter(Boolean)
+    .sort((a, b) => a.name.localeCompare(b.name));
 
 export default async function ProjectsPage({
-  searchParams,
+    searchParams,
 }: {
-  searchParams: Promise<{
-    search?: string;
-    skills?: string;
-    page?: string;
-  }>
+    searchParams: Promise<{
+        search?: string;
+        skills?: string;
+        page?: string;
+    }>;
 }) {
-  const params = await searchParams;
-  const search = params.search?.toLowerCase() ?? "";
-  const selectedSkills = params.skills
-    ? params.skills.split(",")
-    : [];
-  const currentPage = Number(params.page ?? "1");
+    const params = await searchParams;
+    const search = params.search?.toLowerCase() ?? "";
+    const currentPage = Number(params.page ?? "1");
 
-  // Filter
-  const filteredProjects = projects.filter((project) => {
-    const matchesSearch =
-      !search ||
-      project.title.toLowerCase().includes(search) ||
-      project.description.toLowerCase().includes(search) ||
-      project.skills?.some((skillSlug) =>
-        skillMap[skillSlug].name
-        .toLowerCase().includes(search)
-      );
+    // Resolve slug strings from URL into Skill objects once, here
+    const selectedSkills: Skill[] = (params.skills?.split(",") ?? [])
+        .map((slug) => skillMap[slug])
+        .filter(Boolean);
 
-    const matchesSkills =
-      selectedSkills.length === 0 ||
-      project.skills?.some((skill) =>
-        selectedSkills.includes(skill)
-      );
+    const selectedSlugs = new Set(selectedSkills.map((s) => s.slug));
 
-    return matchesSearch && matchesSkills;
-  });
+    // Filter
+    const filteredProjects = projects.filter((project) => {
+        const matchesSearch =
+            !search ||
+            project.title.toLowerCase().includes(search) ||
+            project.description.toLowerCase().includes(search) ||
+            project.skillSlugs.some((slug) =>
+                skillMap[slug]?.name.toLowerCase().includes(search)
+            );
 
-  // Pagination
-  const totalPages = Math.ceil(filteredProjects.length / PAGE_SIZE);
-  const start = (currentPage - 1) * PAGE_SIZE;
-  const paginatedProjects = filteredProjects.slice(
-    start,
-    start + PAGE_SIZE
-  );
+        const matchesSkills =
+            selectedSlugs.size === 0 ||
+            project.skillSlugs.some((slug) => selectedSlugs.has(slug));
 
-  const featured =
-    projects
-      .filter((p) => p.featured)
-      .sort((a, b) =>
-        b.lastUpdatedDate.getTime() - a.lastUpdatedDate.getTime()
-      )
-      .slice(0, 6);
+        return matchesSearch && matchesSkills;
+    });
 
-  return (
-    <main className="mx-auto max-w-6xl px-6 py-16 space-y-16">
-      {/* Page Header */}
-      <section className="space-y-4">
-        <h1 className="text-4xl font-bold tracking-tight">
-          Projects
-        </h1>
-        <p className="max-w-2xl text-muted-foreground">
-          A collection of projects focused on backend systems,
-          APIs, cloud infrastructure, and maintainable
-          architecture.
-        </p>
-      </section>
+    // Pagination
+    const totalPages = Math.ceil(filteredProjects.length / PAGE_SIZE);
+    const start = (currentPage - 1) * PAGE_SIZE;
+    const paginatedProjects = filteredProjects.slice(start, start + PAGE_SIZE);
 
-      {/* Featured */}
-      {featured.length > 0 && (
-        <section className="space-y-8">
-          <h2 className="text-2xl font-semibold">
-            Featured Projects
-          </h2>
+    const featured = projects
+        .filter((p) => p.featured)
+        .sort((a, b) => b.lastUpdatedDate.getTime() - a.lastUpdatedDate.getTime())
+        .slice(0, 6);
 
-          <div className="grid gap-8 md:grid-cols-2">
-            {featured.map((project) => (
-              <ProjectCard
-                key={project.slug}
-                image={project.image}
-                label={project.label}
-                title={project.title}
-                description={project.description}
-                skills={project.skills}
-              />
-            ))}
-          </div>
-        </section>
-      )}
+    return (
+        <main className="mx-auto max-w-6xl px-6 py-16 space-y-16">
+            {/* Page Header */}
+            <section className="space-y-4">
+                <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
+                <p className="max-w-2xl text-muted-foreground">
+                    A collection of projects focused on backend systems, APIs, cloud
+                    infrastructure, and maintainable architecture.
+                </p>
+            </section>
 
-      {/* All Projects */}
-      <section id="projects-list" className="space-y-8">
-        <h2 className="text-2xl font-semibold">
-          All Projects
-        </h2>
+            {/* Featured */}
+            {featured.length > 0 && (
+                <section className="space-y-8">
+                    <h2 className="text-2xl font-semibold">Featured Projects</h2>
+                    <div className="grid gap-8 md:grid-cols-2">
+                        {featured.map((project) => (
+                            <ProjectCard
+                                key={project.slug}
+                                image={project.image}
+                                label={project.label}
+                                title={project.title}
+                                description={project.description}
+                                skillSlugs={project.skillSlugs}
+                            />
+                        ))}
+                    </div>
+                </section>
+            )}
 
-        <ProjectFilters
-          search={search}
-          selectedSkills={selectedSkills}
-          allSkills={allSkills}
-        />
+            {/* All Projects */}
+            <section id="projects-list" className="space-y-8">
+                <h2 className="text-2xl font-semibold">All Projects</h2>
 
-        <p className="text-sm text-muted-foreground mb-4">
-          Showing {paginatedProjects.length} of {filteredProjects.length} projects
-        </p>
+                <ProjectFilters
+                    search={search}
+                    selectedSkills={selectedSkills}
+                    allSkills={allSkills}
+                />
 
-        {/* Projects List */}
-        {filteredProjects.length === 0 ? (
-          /* No projects found */
-          <div className="py-16 text-center">
-            <p className="text-lg font-medium">
-              No projects match your filters.
-            </p>
+                <p className="text-sm text-muted-foreground">
+                    Showing {paginatedProjects.length} of {filteredProjects.length} projects
+                </p>
 
-            <p className="mt-2 text-sm text-muted-foreground">
-              Try adjusting your search or selected skills.
-            </p>
-          </div>
-        ) : (
-          /* List the projects */
-          <div className="space-y-8">
-            {paginatedProjects.map((project, index) => (
-              <ProjectListItem
-                key={project.slug}
-                project={project}
-                imagePosition={
-                  index % 2 === 0 ? "left" : "right"
-                }
-              />
-            ))}
-          </div>
-        )}
+                {filteredProjects.length === 0 ? (
+                    <div className="py-16 text-center">
+                        <p className="text-lg font-medium">No projects match your filters.</p>
+                        <p className="mt-2 text-sm text-muted-foreground">
+                            Try adjusting your search or selected skills.
+                        </p>
+                    </div>
+                ) : (
+                    <div className="space-y-8">
+                        {paginatedProjects.map((project, index) => (
+                            <ProjectListItem
+                                key={project.slug}
+                                project={project}
+                                imagePosition={index % 2 === 0 ? "left" : "right"}
+                            />
+                        ))}
+                    </div>
+                )}
 
-        <ProjectPagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          search={search}
-          selectedSkills={selectedSkills}
-        />
-      </section>
-    </main>
-  );
+                <ProjectPagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    search={search}
+                    selectedSkills={selectedSkills}
+                />
+            </section>
+        </main>
+    );
 }

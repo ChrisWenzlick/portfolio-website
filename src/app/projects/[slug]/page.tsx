@@ -46,7 +46,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                     )}
 
                     <ProjectMeta
-                        technologies={metadata.technologies}
+                        skillSlugs={metadata.skillSlugs}
                         repo={metadata.repo}
                         live={metadata.live}
                     />

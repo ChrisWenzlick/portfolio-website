@@ -1,15 +1,14 @@
 import Card, { CardMedia, CardHeader, CardContent, CardFooter } from "./Card"
-import Badge from "./Badge";
 import { cn } from "@/lib/utils";
 import { skillMap } from "@/content";
-import { Icon } from "components/icons/Icon";
+import { SkillBadge } from "./SkillBadge";
 
 interface ProjectCardProps {
     image?: string;
     label?: string;
     title: string;
     description: string;
-    skills?: string[];
+    skillSlugs?: string[];
     className?: string;
 }
 
@@ -18,7 +17,7 @@ export default function ProjectCard({
     label,
     title,
     description,
-    skills = [],
+    skillSlugs = [],
     className,
 }: ProjectCardProps) {
     return (
@@ -33,13 +32,14 @@ export default function ProjectCard({
                 <p className="text-sm text-(--color-text-muted) line-clamp-3">{description}</p>
             </CardContent>
 
-            {skills.length > 0 && (
+            {skillSlugs.length > 0 && (
                 <CardFooter className="flex flex-wrap gap-2">
-                    {skills.map((skill, i) => (
-                        <Badge key={i} size="sm" variant="subtle">
-                            <Icon name={skillMap[skill].iconName} />
-                            {skillMap[skill].name}
-                        </Badge>
+                    {skillSlugs.map((slug, i) => (
+                        <SkillBadge
+                            key={slug}
+                            name={skillMap[slug].name}
+                            href={`/projects?skills=${slug}#projects-list`}
+                        />
                     ))}
                 </CardFooter>
             )}

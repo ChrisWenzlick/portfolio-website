@@ -19,7 +19,11 @@ export default function SkillGroup({ group }: SkillGroupProps) {
 
             <div className="flex flex-wrap gap-2">
                 {group.skillSlugs.map((skillSlug) => (
-                    <SkillBadge key={skillSlug} name={skillMap[skillSlug].name} />
+                    <SkillBadge
+                        key={skillSlug}
+                        name={skillMap[skillSlug].name}
+                        href={`/projects?skills=${skillSlug}#projects-list`}
+                    />
                 ))}
             </div>
         </div>

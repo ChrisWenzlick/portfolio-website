@@ -1,9 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import Badge from "components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { skillMap } from "@/content/skills";
-import { Icon } from "components/icons/Icon";
+import { SkillBadge } from "components/ui/SkillBadge";
 
 interface ProjectListItemProps {
   project: {
@@ -11,7 +10,7 @@ interface ProjectListItemProps {
     title: string;
     description: string;
     image?: string;
-    skills?: string[];
+    skillSlugs?: string[];
   };
   imagePosition?: "left" | "right";
 }
@@ -50,13 +49,14 @@ export default function ProjectListItem({
           {project.description}
         </p>
 
-        {project.skills && project.skills.length > 0 && (
+        {project.skillSlugs && project.skillSlugs.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-auto">
-            {project.skills.map((skill) => (
-              <Badge key={skill} size="sm" variant="subtle">
-                <Icon name={skillMap[skill].iconName} />
-                {skillMap[skill].name}
-              </Badge>
+            {project.skillSlugs.map((slug) => (
+              <SkillBadge
+                key={slug}
+                name={skillMap[slug].name}
+                href={`/projects?skills=${slug}#projects-list`}
+              />
             ))}
           </div>
         )}

@@ -1,21 +1,25 @@
+import { skillMap } from "@/content";
 import { SkillBadge } from "components/ui/SkillBadge";
 import Link from "next/link";
 
 interface ProjectMetaProps {
-    technologies?: string[];
+    skillSlugs?: string[];
     repo?: string;
     live?: string;
 }
 
-export default function ProjectMeta({ technologies, repo, live }: ProjectMetaProps) {
-    if (!technologies?.length && !repo && !live) return null;
+export default function ProjectMeta({ skillSlugs, repo, live }: ProjectMetaProps) {
+    if (!skillSlugs?.length && !repo && !live) return null;
 
     return (
         <div className="flex flex-col flex-wrap items-center gap-3">
             <div className="flex gap-2">
-                {technologies && technologies.length > 0 && (
-                    technologies.map((tech) => (
-                        <SkillBadge key={tech} name={tech} />
+                {skillSlugs && skillSlugs.length > 0 && (
+                    skillSlugs.map((slug) => (
+                        <SkillBadge
+                            key={slug}
+                            name={skillMap[slug].name}
+                            href={`/projects?skills=${slug}#projects-list`} />
                     ))
                 )}
             </div>
@@ -25,7 +29,7 @@ export default function ProjectMeta({ technologies, repo, live }: ProjectMetaPro
                     <Link
                         href={repo}
                         target="_blank"
-                        className="text-sm font-medium text-[var(--color-primary)] hover:underline"
+                        className="text-sm font-medium text-(--color-primary) hover:underline"
                     >
                         View Code
                     </Link>
@@ -34,7 +38,7 @@ export default function ProjectMeta({ technologies, repo, live }: ProjectMetaPro
                     <Link
                         href={live}
                         target="_blank"
-                        className="text-sm font-medium text-[var(--color-primary)] hover:underline"
+                        className="text-sm font-medium text-(--color-primary) hover:underline"
                     >
                         Live Demo
                     </Link>

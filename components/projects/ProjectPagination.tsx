@@ -1,12 +1,13 @@
 "use client";
 
+import { Skill } from "@/content/skills";
 import Link from "next/link";
 
 interface Props {
   currentPage: number;
   totalPages: number;
   search: string;
-  selectedSkills: string[];
+  selectedSkills: Skill[];
 }
 
 export default function ProjectPagination({
@@ -19,10 +20,11 @@ export default function ProjectPagination({
 
   function buildUrl(page: number) {
     const params = new URLSearchParams();
+    const selectedSlugs = selectedSkills.map(skill => skill.slug);
 
     if (search) params.set("search", search);
-    if (selectedSkills.length > 0)
-      params.set("skills", selectedSkills.join(","));
+    if (selectedSlugs.length > 0)
+      params.set("skills", selectedSlugs.join(","));
 
     params.set("page", page.toString());
 
