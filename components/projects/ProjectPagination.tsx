@@ -35,7 +35,7 @@ export default function ProjectPagination({
   return (
     <div className="flex justify-center gap-4">
       {currentPage > 1 && (
-        <Button href={buildUrl(currentPage - 1)}>
+        <Button href={`${buildUrl(currentPage - 1)}#projects-list`}>
           Previous
         </Button>
       )}
@@ -45,7 +45,7 @@ export default function ProjectPagination({
       </span>
 
       {currentPage < totalPages && (
-        <Button href={buildUrl(currentPage + 1)}>
+        <Button href={`${buildUrl(currentPage + 1)}#projects-list`}>
           Next
         </Button>
       )}
