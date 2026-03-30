@@ -34,7 +34,7 @@ export default function ProjectCard({
 
             {skillSlugs.length > 0 && (
                 <CardFooter className="flex flex-wrap gap-2">
-                    {skillSlugs.map((slug, i) => (
+                    {skillSlugs.map((slug) => (
                         <SkillBadge
                             key={slug}
                             name={skillMap[slug].name}

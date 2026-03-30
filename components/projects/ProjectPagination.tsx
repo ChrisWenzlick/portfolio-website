@@ -1,6 +1,7 @@
 "use client";
 
 import { Skill } from "@/content/skills";
+import Button from "components/ui/Button";
 import Link from "next/link";
 
 interface Props {
@@ -34,12 +35,9 @@ export default function ProjectPagination({
   return (
     <div className="flex justify-center gap-4">
       {currentPage > 1 && (
-        <Link
-          href={buildUrl(currentPage - 1)}
-          className="px-4 py-2 border rounded-md"
-        >
+        <Button href={buildUrl(currentPage - 1)}>
           Previous
-        </Link>
+        </Button>
       )}
 
       <span className="px-4 py-2 text-sm text-muted-foreground">
@@ -47,12 +45,9 @@ export default function ProjectPagination({
       </span>
 
       {currentPage < totalPages && (
-        <Link
-          href={buildUrl(currentPage + 1)}
-          className="px-4 py-2 border rounded-md"
-        >
+        <Button href={buildUrl(currentPage + 1)}>
           Next
-        </Link>
+        </Button>
       )}
     </div>
   );
