@@ -68,7 +68,7 @@ export default async function ProjectsPage({
             {/* Page Header */}
             <section className="space-y-4">
                 <h1 className="text-4xl font-bold tracking-tight">Projects</h1>
-                <p className="max-w-2xl text-muted-foreground">
+                <p className="max-w-2xl text-center text-muted-foreground">
                     A collection of projects focused on backend systems, APIs, cloud
                     infrastructure, and maintainable architecture.
                 </p>
