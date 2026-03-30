@@ -12,7 +12,7 @@ export default function Home() {
         description="Focused on backend, APIs, and cloud, with full-stack capability."
         image="/desk.jpg"
         ctas={[
-          { label: "View Projects", href: "#projects", variant: "primary" },
+          { label: "View All Projects", href: "/projects", variant: "primary" },
           { label: "Contact", href: "#contact", variant: "outline" },
         ]}
       />

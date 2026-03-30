@@ -6,7 +6,9 @@ export interface Project {
     label?: string;
     skills: string[];
     href?: string;          // external link or internal route
-    featured?: boolean;     // whether to feature on homepage
+    featured: boolean;     // whether to feature on homepage
+    createdDate: Date;
+    lastUpdatedDate: Date;
 }
 
 export const projects: Project[] = [
@@ -20,6 +22,8 @@ export const projects: Project[] = [
         skills: ["nextjs", "tailwind", "typescript"],
         href: "#",
         featured: true,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 23, 12, 0, 0, 0),
     },
     {
         slug: "test1",
@@ -29,7 +33,9 @@ export const projects: Project[] = [
         image: "/desk.jpg",
         skills: ["html", "css", "javascript"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 24, 12, 0, 0, 0),
     },
     {
         slug: "test2",
@@ -39,7 +45,9 @@ export const projects: Project[] = [
         image: "/fence.jpg",
         skills: ["angular", "react", "typescript"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 25, 12, 0, 0, 0),
     },
     {
         slug: "test3",
@@ -50,6 +58,8 @@ export const projects: Project[] = [
         skills: ["cplusplus", "linux"],
         href: "#",
         featured: true,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 26, 12, 0, 0, 0),
     },
     {
         slug: "test4",
@@ -59,7 +69,9 @@ export const projects: Project[] = [
         image: "/people.jpg",
         skills: ["csharp", "dotnetcore", "dotnetframework"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 27, 12, 0, 0, 0),
     },
     {
         slug: "test5",
@@ -69,7 +81,9 @@ export const projects: Project[] = [
         image: "/trees.jpg",
         skills: ["csharp", "dotnetcore", "sqlserver"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 28, 12, 0, 0, 0),
     },
     {
         slug: "test6",
@@ -80,6 +94,8 @@ export const projects: Project[] = [
         skills: ["java"],
         href: "#",
         featured: true,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 29, 12, 0, 0, 0),
     },
     {
         slug: "test7",
@@ -89,7 +105,9 @@ export const projects: Project[] = [
         image: "/waves.jpg",
         skills: ["json", "xml"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 30, 12, 0, 0, 0),
     },
     {
         slug: "test8",
@@ -99,7 +117,9 @@ export const projects: Project[] = [
         image: "/bench.jpg",
         skills: ["html", "css", "javascript"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 2, 31, 12, 0, 0, 0),
     },
     {
         slug: "test9",
@@ -110,6 +130,8 @@ export const projects: Project[] = [
         skills: ["html", "css", "javascript"],
         href: "#",
         featured: true,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 3, 1, 12, 0, 0, 0),
     },
     {
         slug: "test10",
@@ -119,7 +141,9 @@ export const projects: Project[] = [
         image: "/fence.jpg",
         skills: ["html", "css", "javascript"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 3, 2, 12, 0, 0, 0),
     },
     {
         slug: "test11",
@@ -129,6 +153,8 @@ export const projects: Project[] = [
         image: "/jellyfish.jpg",
         skills: ["html", "css", "javascript"],
         href: "#",
-        featured: true,
+        featured: false,
+        createdDate: new Date(2026, 2, 23, 12, 0, 0, 0),
+        lastUpdatedDate: new Date(2026, 3, 3, 12, 0, 0, 0),
     },
 ];

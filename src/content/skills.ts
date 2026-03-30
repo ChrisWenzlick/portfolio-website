@@ -2,7 +2,7 @@ export interface Skill {
     name: string;
     category: string;
     slug: string;
-    icon?: string;      // path to SVG
+    iconName?: string;
 }
 
 export interface SkillGroup {
@@ -27,7 +27,6 @@ export const skills: Skill[] = [
     { name: "HTML", category: "Frontend", slug: "html" },
     { name: "CSS", category: "Frontend", slug: "css" },
     { name: "Angular", category: "Frontend", slug: "angular" },
-    { name: "React", category: "Frontend", slug: "react" },
 
     { name: "TypeScript", category: "Full-Stack", slug: "typescript" },
     { name: "JavaScript", category: "Full-Stack", slug: "javascript" },

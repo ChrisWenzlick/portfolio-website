@@ -66,7 +66,13 @@ export default async function ProjectsPage({
     start + PAGE_SIZE
   );
 
-  const featured = projects.filter((p) => p.featured);
+  const featured =
+    projects
+      .filter((p) => p.featured)
+      .sort((a, b) =>
+        b.lastUpdatedDate.getTime() - a.lastUpdatedDate.getTime()
+      )
+      .slice(0, 6);
 
   return (
     <main className="mx-auto max-w-6xl px-6 py-16 space-y-16">

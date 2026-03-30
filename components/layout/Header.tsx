@@ -21,16 +21,16 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
             "bg-(--color-primary)/80 backdrop-blur-sm text-(--color-text)",
             className
         )}>
-            <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <nav className="mx-auto flex h-14 w-full items-center justify-between px-4 sm:px-6 lg:px-8">
                 {/* Brand / Logo */}
-                <Link href="/" className="text-xl font-bold flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 transition-colors hover:bg-(--color-primary-contrast) hover:text-(--color-primary)">
+                <Link href="/" className="text-xl font-bold flex items-center justify-center rounded-full h-10 cursor-pointer px-4 transition-colors hover:bg-(--color-primary-hover)">
                     CW
                 </Link>
 
                 {/* Desktop links */}
                 <div className="hidden items-center gap-6 md:flex">
                     {NAV_LINKS.map(({ href, label }) => (
-                        <Link key={href} href={href} className="text-sm font-medium flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 transition-colors duration-200 ease-in-out hover:bg-(--color-primary-contrast) hover:text-(--color-primary)">
+                        <Link key={href} href={href} className="text-sm font-medium flex items-center justify-center rounded-(--radius-lg) h-10 cursor-pointer px-4 transition-colors duration-200 ease-in-out hover:bg-(--color-primary-hover)">
                             {label}
                         </Link>
                     ))}
@@ -40,7 +40,7 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
                 {/* Mobile menu button */}
                 <button
                     onClick={() => setOpen((prev) => !prev)}
-                    className="inline-flex items-center justify-center p-2 rounded-md hover:bg-(--color-surface) md:hidden"
+                    className="inline-flex items-center justify-center p-2 rounded-md hover:bg-(--color-primary-hover) md:hidden"
                 >
                     <span className="sr-only">Toggle menu</span>
                     <div className="h-4 w-6 flex flex-col justify-between">
@@ -53,13 +53,13 @@ export default function Header({ className }: React.HTMLAttributes<HTMLElement>)
 
             {/* Mobile dropdown */}
             {open && (
-                <div className="border-t border-(--color-border) border-solid bg-(--color-bg) shadow-sm md:hidden">
-                    <div className="px-4 py-2 flex flex-col gap-2">
+                <div className="border-y border-(--color-border) border-solid bg-(--color-primary/80) shadow-sm md:hidden">
+                    <div className="py-2 flex flex-col items-center gap-2">
                         {NAV_LINKS.map(({ href, label }) => (
                             <Link
                                 key={href}
                                 href={href}
-                                className="block py-1 text-sm font-medium transition-colors duration-200 ease-in-out hover:text-(--color-primary)"
+                                className="block w-full text-center py-1 text-sm font-medium transition-colors duration-200 ease-in-out text-(--color-text) hover:text-(--color-text-hover) hover:bg-(--color-primary-hover)"
                                 onClick={() => setOpen(false)}
                             >
                                 {label}

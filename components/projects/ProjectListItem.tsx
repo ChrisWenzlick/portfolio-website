@@ -3,6 +3,7 @@ import Image from "next/image";
 import Badge from "components/ui/Badge";
 import { cn } from "@/lib/utils";
 import { skillMap } from "@/content/skills";
+import { Icon } from "components/icons/Icon";
 
 interface ProjectListItemProps {
   project: {
@@ -53,6 +54,7 @@ export default function ProjectListItem({
           <div className="flex flex-wrap gap-2 mt-auto">
             {project.skills.map((skill) => (
               <Badge key={skill} size="sm" variant="subtle">
+                <Icon name={skillMap[skill].iconName} />
                 {skillMap[skill].name}
               </Badge>
             ))}

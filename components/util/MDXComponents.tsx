@@ -1,51 +1,47 @@
 import Image from "next/image";
 
-export const MDXComponents = {
-    img: (props: any) => (
-        <div className="my-8">
-            <Image
-                {...props}
-                alt={props.alt || ""}
-                width={1200}
-                height={800}
-                className="rounded-lg"
-            />
-            {props.caption && (
-                <p className="mt-2 text-sm text-muted-foreground text-center">
-                    {props.caption}
-                </p>
-            )}
-        </div>
-    ),
+interface ArticleImageProps {
+  src: string;
+  alt?: string;
+  caption?: string;
+  aspectRatio?: number; // width / height, default 16/9
+  maxWidth?: number; // optional maximum width in px
+}
 
-    SideImage: ({
-        src,
-        alt,
-        side = "right",
-        children,
-    }: {
-        src: string;
-        alt?: string;
-        side?: "left" | "right";
-        children: React.ReactNode;
-    }) => (
+export const MDXComponents = {
+  ArticleImage: ({
+    src,
+    alt = "",
+    caption,
+    aspectRatio = 9 / 16,
+    maxWidth = 800,
+  }: ArticleImageProps) => {
+    // Calculate height/width ratio for Tailwind aspect class
+    // Tailwind arbitrary aspect ratio expects height/width
+    const hOverW = (1 / aspectRatio).toFixed(4);
+
+    return (
+      <div className="my-8 w-full flex flex-col items-center">
         <div
-            className={`my-10 flex flex-col gap-6 md:flex-row ${
-                side === "left" ? "md:flex-row" : "md:flex-row-reverse"
-            }`}
+          className="relative w-full mx-auto rounded-lg"
+          style={{
+            maxWidth: `${maxWidth}px`,
+            aspectRatio: hOverW, // use standard CSS property directly
+          }}
         >
-            <div className="md:w-1/2">
-                <Image
-                    src={src}
-                    alt={alt || ""}
-                    width={800}
-                    height={600}
-                    className="rounded-lg"
-                />
-            </div>
-            <div className="md:w-1/2 prose prose-neutral dark:prose-invert max-w-none">
-                {children}
-            </div>
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover rounded-lg"
+          />
         </div>
-    ),
+        {caption && (
+          <p className="mt-2 text-sm text-muted-foreground text-center">
+            {caption}
+          </p>
+        )}
+      </div>
+    );
+  },
 };

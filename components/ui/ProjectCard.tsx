@@ -2,6 +2,7 @@ import Card, { CardMedia, CardHeader, CardContent, CardFooter } from "./Card"
 import Badge from "./Badge";
 import { cn } from "@/lib/utils";
 import { skillMap } from "@/content";
+import { Icon } from "components/icons/Icon";
 
 interface ProjectCardProps {
     image?: string;
@@ -36,6 +37,7 @@ export default function ProjectCard({
                 <CardFooter className="flex flex-wrap gap-2">
                     {skills.map((skill, i) => (
                         <Badge key={i} size="sm" variant="subtle">
+                            <Icon name={skillMap[skill].iconName} />
                             {skillMap[skill].name}
                         </Badge>
                     ))}
