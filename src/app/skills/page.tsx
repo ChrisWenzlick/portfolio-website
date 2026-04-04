@@ -9,7 +9,7 @@ export default function SkillsPage() {
 
   return (
     <main className="container mx-auto px-6 py-16 space-y-16">
-      <header className="space-y-4 max-w-3xl text-center">
+      <header className="space-y-4 w-full text-center">
         <h1 className="text-4xl font-bold tracking-tight">
           Skills & Technologies
         </h1>
