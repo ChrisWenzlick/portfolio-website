@@ -83,7 +83,7 @@ export default async function ProjectsPage({
                             <ProjectCard
                                 key={project.slug}
                                 image={project.image}
-                                label={project.label}
+                                label={project.featured ? "Featured" : project.label}
                                 title={project.title}
                                 description={project.description}
                                 skillSlugs={project.skillSlugs}

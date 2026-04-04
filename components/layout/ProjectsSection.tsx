@@ -21,10 +21,10 @@ export function ProjectsSection() {
                         <ProjectCard
                             key={project.slug}
                             image={project.image}
-                            label={project.label}
+                            label={project.featured ? "Featured" : project.label}
                             title={project.title}
                             description={project.description}
-                            skills={project.skills}
+                            skillSlugs={project.skillSlugs}
                         />
                     </Link>
                 ))}

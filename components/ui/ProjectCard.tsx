@@ -38,7 +38,6 @@ export default function ProjectCard({
                         <SkillBadge
                             key={slug}
                             name={skillMap[slug].name}
-                            href={`/projects?skills=${slug}#projects-list`}
                         />
                     ))}
                 </CardFooter>
