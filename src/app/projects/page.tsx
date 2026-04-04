@@ -87,6 +87,7 @@ export default async function ProjectsPage({
                                 title={project.title}
                                 description={project.description}
                                 skillSlugs={project.skillSlugs}
+                                slug={project.slug}
                             />
                         ))}
                     </div>

@@ -25,6 +25,7 @@ export function ProjectsSection() {
                             title={project.title}
                             description={project.description}
                             skillSlugs={project.skillSlugs}
+                            slug={project.slug}
                         />
                     </Link>
                 ))}
