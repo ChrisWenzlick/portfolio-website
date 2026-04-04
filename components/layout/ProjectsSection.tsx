@@ -13,21 +13,16 @@ export function ProjectsSection() {
                     .slice(0, 6)
                     .map((project) =>
                 (
-                    <Link
+                    <ProjectCard
                         key={project.slug}
-                        href={`/projects/${project.slug}`}
+                        image={project.image}
+                        label={project.featured ? "Featured" : project.label}
+                        title={project.title}
+                        description={project.description}
+                        skillSlugs={project.skillSlugs}
+                        slug={project.slug}
                         className="block h-full"
-                    >
-                        <ProjectCard
-                            key={project.slug}
-                            image={project.image}
-                            label={project.featured ? "Featured" : project.label}
-                            title={project.title}
-                            description={project.description}
-                            skillSlugs={project.skillSlugs}
-                            slug={project.slug}
-                        />
-                    </Link>
+                    />
                 ))}
             </div>
             <Button>
