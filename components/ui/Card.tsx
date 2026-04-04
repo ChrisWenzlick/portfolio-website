@@ -59,9 +59,7 @@ export function CardMedia({
             alt={alt ?? label ?? ""}
             fill
             className="object-cover"
-            sizes="(max-width: 768px) 100vw,
-                   (max-width: 1200px) 50vw,
-                   32vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
 
           {/* Fade to dark at the bottom */}
