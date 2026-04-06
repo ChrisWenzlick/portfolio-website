@@ -49,13 +49,15 @@ export const skills: Skill[] = [
     { slug: "monitoring",       name: "Monitoring & Logging",   category: "DevOps" },
 
     // Environments
+    { slug: "windows",          name: "Windows",         category: "Environments / OS" },
     { slug: "linux",            name: "Linux",           category: "Environments / OS" },
 
     // Data
     { slug: "json",             name: "JSON",            category: "Data" },
     { slug: "xml",              name: "XML",             category: "Data" },
+    { slug: "hl7",              name: "HL7",             category: "Data" },
 
-    // Architecture (no projects needed — satisfies your "skills without projects" requirement)
+    // Architecture
     { slug: "systemdesign",         name: "System Design",          category: "Architecture" },
     { slug: "ddd",                  name: "Domain-Driven Design",   category: "Architecture" },
     { slug: "codereviews",          name: "Code Reviews",           category: "Architecture" },

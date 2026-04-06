@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Skill } from "@/content/skills";
 import { cn } from "@/lib/utils";
 import { SkillBadge } from "components/ui/SkillBadge";
@@ -22,13 +22,31 @@ export default function ProjectFilters({ search, selectedSkills, allSkills }: Pr
 
     const dropdownRef = useRef<HTMLDivElement>(null);
 
-    // Debounce search input — the only place updateParams is called for search
+    const updateParams = useCallback(
+        (newParams: Record<string, string | undefined>) => {
+            const current = new URLSearchParams(params.toString());
+            Object.entries(newParams).forEach(([key, value]) => {
+                if (value === undefined) current.delete(key);
+                else current.set(key, value);
+            });
+            current.delete("page");
+            router.replace(`/projects?${current.toString()}`, { scroll: false });
+        },
+        [params, router]
+    );
+
+    // Sync searchValue if the `search` prop changes externally (e.g. back/forward nav)
+    useEffect(() => {
+        setSearchValue(search);
+    }, [search]);
+
+    // Debounce search input
     useEffect(() => {
         const timeout = setTimeout(() => {
             updateParams({ search: searchValue || undefined });
         }, 300);
         return () => clearTimeout(timeout);
-    }, [searchValue]);
+    }, [searchValue, updateParams]);
 
     // Close dropdown on outside click
     useEffect(() => {
@@ -53,24 +71,19 @@ export default function ProjectFilters({ search, selectedSkills, allSkills }: Pr
         [selectedSkills]
     );
 
-    function updateParams(newParams: Record<string, string | undefined>) {
-        const current = new URLSearchParams(params.toString());
-        Object.entries(newParams).forEach(([key, value]) => {
-            if (value === undefined) current.delete(key);
-            else current.set(key, value);
-        });
-        current.delete("page");
-        router.replace(`/projects?${current.toString()}`, { scroll: false });
-    }
+    const toggleSkill = useCallback(
+        (skill: Skill) => {
+            const updated = selectedSlugs.has(skill.slug)
+                ? selectedSkills.filter((s) => s.slug !== skill.slug)
+                : [...selectedSkills, skill];
+            updateParams({
+                skills: updated.length ? updated.map((s) => s.slug).join(",") : undefined,
+            });
+        },
+        [selectedSlugs, selectedSkills, updateParams]
+    );
 
-    function toggleSkill(skill: Skill) {
-        const updated = selectedSlugs.has(skill.slug)
-            ? selectedSkills.filter((s) => s.slug !== skill.slug)
-            : [...selectedSkills, skill];
-        updateParams({
-            skills: updated.length ? updated.map((s) => s.slug).join(",") : undefined,
-        });
-    }
+    const handleToggleOpen = useCallback(() => setOpen((prev) => !prev), []);
 
     return (
         <div className="space-y-4">
@@ -78,7 +91,7 @@ export default function ProjectFilters({ search, selectedSkills, allSkills }: Pr
             <input
                 type="text"
                 value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}  // debounce handles the rest
+                onChange={(e) => setSearchValue(e.target.value)}
                 placeholder="Search projects..."
                 className="w-full md:w-80 rounded-md border px-3 py-2 bg-(--color-bg)"
             />
@@ -92,7 +105,6 @@ export default function ProjectFilters({ search, selectedSkills, allSkills }: Pr
                             name={skill.name}
                             onClick={() => toggleSkill(skill)}
                             aria-label={`Remove ${skill.name} filter`}
-                            // Highlight to signal these are active/removable
                             className="cursor-pointer border-(--color-primary) text-(--color-text)"
                             trailingIcon="×"
                         />
@@ -103,7 +115,7 @@ export default function ProjectFilters({ search, selectedSkills, allSkills }: Pr
             {/* Skill dropdown */}
             <div className="relative" ref={dropdownRef}>
                 <button
-                    onClick={() => setOpen((prev) => !prev)}
+                    onClick={handleToggleOpen}
                     className="rounded-md border px-4 py-2 text-sm bg-(--color-bg)"
                     aria-expanded={open}
                     aria-haspopup="listbox"

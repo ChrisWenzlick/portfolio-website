@@ -10,49 +10,17 @@ export interface Testimonial {
 
 export const testimonials: Testimonial[] = [
     {
-      id: "testimonial-1",
+      id: "cindy-howard",
       quote:
-        "Chris consistently delivered clean, maintainable solutions and raised the quality bar for the entire team.",
-      author: "Jane Doe",
-      role: "Senior Engineering Manager",
-      company: "Healthcare Tech Co.",
-    },
-    {
-      id: "testimonial-2",
-      quote:
-        "One of the most dependable engineers I've worked with—strong technical judgment and great communication.",
-      author: "John Smith",
-      role: "Principal Software Engineer",
-      company: "Enterprise SaaS Company",
-    },
-    {
-      id: "testimonial-3",
-      quote:
-        "Chris has a rare ability to balance speed with long-term maintainability. I'd happily work with him again.",
-      author: "Alex Johnson",
-      role: "Product Manager",
-    },
-    {
-      id: "testimonial-1",
-      quote:
-        "Chris consistently delivered clean, maintainable solutions and raised the quality bar for the entire team.",
-      author: "Jane Doe",
-      role: "Senior Engineering Manager",
-      company: "Healthcare Tech Co.",
-    },
-    {
-      id: "testimonial-2",
-      quote:
-        "One of the most dependable engineers I've worked with—strong technical judgment and great communication.",
-      author: "John Smith",
-      role: "Principal Software Engineer",
-      company: "Enterprise SaaS Company",
-    },
-    {
-      id: "testimonial-3",
-      quote:
-        "Chris has a rare ability to balance speed with long-term maintainability. I'd happily work with him again.",
-      author: "Alex Johnson",
-      role: "Product Manager",
+        `It was a pleasure to work with Christopher. 
+        He was consistently eager to learn and willing 
+        to take on additional roles and responsibilities. 
+        He excelled at every task assigned to him and 
+        truly enjoyed tackling new challenges.\n\n
+        Christopher would be a great addition to any team. 
+        I highly recommend Christopher.`,
+      author: "Cindy Howard",
+      role: "Founder",
+      company: "Fierce Guppy Game Labs",
     },
 ];

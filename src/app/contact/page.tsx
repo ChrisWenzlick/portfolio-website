@@ -18,7 +18,7 @@ export default function ContactPage() {
               Email
             </h2>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:placeholder@fakemail.com"
               className="text-lg font-medium hover:underline"
             >
               your.email@example.com
@@ -30,7 +30,7 @@ export default function ContactPage() {
               GitHub
             </h2>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/ChrisWenzlick"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
@@ -44,7 +44,7 @@ export default function ContactPage() {
               LinkedIn
             </h2>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/christopherwenzlick"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"

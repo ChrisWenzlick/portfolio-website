@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ProjectCard from "../ui/ProjectCard";
 import { Project, projects } from "@/content";
 import Button from "components/ui/Button";

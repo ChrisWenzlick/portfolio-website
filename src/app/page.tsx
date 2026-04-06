@@ -9,11 +9,11 @@ export default function Home() {
       <Hero
         title="Hi, I'm Chris."
         subtitle="I build maintainable software systems with clean architecture and modern tooling."
-        description="Focused on backend, APIs, and cloud, with full-stack capability."
-        image="/desk.jpg"
+        description="Specialized in full-stack development, cloud infrastructure, and healthcare data integration. Experienced with C#, .NET, React, SQL Server, HL7, Epic/Cerner interoperability, and Azure DevOps."
+        image="/placeholder.jpg"
         ctas={[
           { label: "View All Projects", href: "/projects", variant: "primary" },
-          { label: "Contact", href: "#contact", variant: "outline" },
+          { label: "Contact", href: "/contact", variant: "outline" },
         ]}
       />
 
