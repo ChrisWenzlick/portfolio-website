@@ -1,6 +1,8 @@
 import ProjectCard from "../ui/ProjectCard";
-import { Project, projects } from "@/content";
+import { ProjectMeta, getAllProjects } from "@/lib/projects";
 import Button from "components/ui/Button";
+
+const projects = await getAllProjects();
 
 export function ProjectsSection() {
     return (
@@ -14,12 +16,7 @@ export function ProjectsSection() {
                 (
                     <ProjectCard
                         key={project.slug}
-                        image={project.image}
-                        label={project.featured ? "Featured" : project.label}
-                        title={project.title}
-                        description={project.description}
-                        skillSlugs={project.skillSlugs}
-                        slug={project.slug}
+                        project={project}
                         className="block h-full"
                     />
                 ))}
@@ -31,7 +28,7 @@ export function ProjectsSection() {
     );
 }
 
-function CompareByFeaturedAndUpdatedDate(a: Project, b: Project)
+function CompareByFeaturedAndUpdatedDate(a: ProjectMeta, b: ProjectMeta)
 {
     if(b.featured != a.featured)
         return Number(b.featured) - Number(a.featured);

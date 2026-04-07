@@ -2,7 +2,6 @@
 
 import { Skill } from "@/content/skills";
 import Button from "components/ui/Button";
-import Link from "next/link";
 
 interface Props {
   currentPage: number;

@@ -1,7 +1,7 @@
-import Hero from '../../components/layout/Hero';
-import SkillsSection from '../../components/layout/SkillsSection';
-import TestimonialsSection from '../../components/layout/TestimonialsSection';
-import { ProjectsSection } from '../../components/layout/ProjectsSection';
+import Hero from 'components/layout/Hero';
+import SkillsSection from 'components/layout/SkillsSection';
+import TestimonialsSection from 'components/layout/TestimonialsSection';
+import { ProjectsSection } from 'components/layout/ProjectsSection';
 
 export default function Home() {
   return (

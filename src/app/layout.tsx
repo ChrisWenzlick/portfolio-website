@@ -28,7 +28,6 @@ export const metadata: Metadata = {
     "C# developer",
     ".NET developer",
     "React developer",
-    "Azure DevOps",
     "clinical data integration",
   ],
   authors: [{ name: "Christopher Wenzlick" }],

@@ -1,4 +1,4 @@
-import { skillGroups } from "@/content";
+import { skillGroups } from "@/content/skills";
 import SkillGroup from "./SkillGroup";
 
 export default function SkillsSection() {

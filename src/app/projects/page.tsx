@@ -1,4 +1,4 @@
-import { projects } from "@/content/projects";
+import { getAllProjects } from "@/lib/projects";
 import { skillMap } from "@/content/skills";
 import { Skill } from "@/content/skills";
 import ProjectCard from "components/ui/ProjectCard";
@@ -7,6 +7,7 @@ import ProjectFilters from "components/projects/ProjectFilters";
 import ProjectPagination from "components/projects/ProjectPagination";
 
 const PAGE_SIZE = 5;
+const projects = await getAllProjects();
 
 // Derived once at module level — all skills actually used across projects
 const allSkills: Skill[] = Array.from(
@@ -82,12 +83,7 @@ export default async function ProjectsPage({
                         {featured.map((project) => (
                             <ProjectCard
                                 key={project.slug}
-                                image={project.image}
-                                label={project.featured ? "Featured" : project.label}
-                                title={project.title}
-                                description={project.description}
-                                skillSlugs={project.skillSlugs}
-                                slug={project.slug}
+                                project={project}
                             />
                         ))}
                     </div>

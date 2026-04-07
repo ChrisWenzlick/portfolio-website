@@ -7,7 +7,7 @@ export default function ContactPage() {
           </h1>
   
           <p className="text-muted-foreground text-center">
-            If you’d like to discuss opportunities, collaborations, or have
+            If you&apos;d like to discuss opportunities, collaborations, or have
             questions about my work, feel free to reach out.
           </p>
         </header>
@@ -21,7 +21,7 @@ export default function ContactPage() {
               href="mailto:placeholder@fakemail.com"
               className="text-lg font-medium hover:underline"
             >
-              your.email@example.com
+              your.email@placeholder.com
             </a>
           </div>
   
@@ -35,7 +35,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              github.com/yourusername
+              github.com/placeholder
             </a>
           </div>
   
@@ -49,7 +49,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              linkedin.com/in/yourusername
+              linkedin.com/in/placeholder
             </a>
           </div>
         </section>

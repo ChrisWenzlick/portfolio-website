@@ -1,5 +1,5 @@
 
-import { skills } from "@/content"
+import { skills } from "@/content/skills"
 import { SkillBadge } from "components/ui/SkillBadge"
 
 export default function SkillsPage() {

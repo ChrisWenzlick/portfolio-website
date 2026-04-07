@@ -1,4 +1,4 @@
-import { skillMap } from "@/content";
+import { skillMap } from "@/content/skills";
 import { SkillBadge } from "components/ui/SkillBadge";
 import Link from "next/link";
 
