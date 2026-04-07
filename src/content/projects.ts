@@ -17,7 +17,7 @@ export const projects: Project[] = [
         title: "Developer Portfolio",
         description:
             "A clean, SEO-friendly portfolio built with Next.js, Tailwind, TypeScript, and MDX.",
-        image: "/placeholder.jpg",
+        image: "/images/portfolio-website/portfolio-website-v1.jpg",
         label: "",
         skillSlugs: ["nextjs", "tailwind", "typescript"],
         href: "#",
