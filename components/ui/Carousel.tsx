@@ -30,7 +30,7 @@ export default function ScaleCarousel({
         return (
             <div className="w-full flex justify-center">
                 <div
-                    className="relative w-full min-h-64 rounded-lg overflow-hidden shadow-md ring-1 ring-black/10"
+                    className="rounded-lg overflow-hidden shadow-md ring-1 ring-black/10"
                     style={{
                         ...(slideAspectRatio && { aspectRatio: slideAspectRatio }),
                         ...(slideMaxHeight && { maxHeight: `${slideMaxHeight}px` }),

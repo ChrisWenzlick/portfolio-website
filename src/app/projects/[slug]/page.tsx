@@ -51,14 +51,16 @@ export default async function ProjectPage({
                             {images.map((image) => (
                                 <div
                                     key={image.src}
-                                    className="relative w-full h-64 md:h-80"
+                                    className="relative w-full max-h-96"
                                 >
                                     <Image
                                         src={image.src}
                                         alt={image.alt ?? ""}
-                                        fill
-                                        className="object-contain"
+                                        width={1200}
+                                        height={800}
+                                        className="w-full h-auto max-h-96 object-contain"
                                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        priority
                                     />
                                 </div>
                             ))}
