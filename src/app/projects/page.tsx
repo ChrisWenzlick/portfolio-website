@@ -1,4 +1,15 @@
+import { Metadata } from "next";
 import { getAllProjects } from "@/lib/projects";
+
+export const metadata: Metadata = {
+    title: "Projects | Christopher Wenzlick",
+    description: "Browse projects focused on backend systems, APIs, cloud infrastructure, and healthcare data integration.",
+    openGraph: {
+        title: "Projects | Christopher Wenzlick",
+        description: "Browse projects focused on backend systems, APIs, cloud infrastructure, and healthcare data integration.",
+        type: "website",
+    },
+};
 import { skillMap } from "@/content/skills";
 import { Skill } from "@/content/skills";
 import ProjectCard from "components/ui/ProjectCard";

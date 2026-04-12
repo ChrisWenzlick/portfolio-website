@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { getAllProjectSlugs } from "@/lib/projects";
@@ -6,6 +7,28 @@ import { MDXComponents } from "components/util/MDXComponents";
 import Carousel from "components/ui/Carousel";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    try {
+        const { metadata } = await import(`@/content/projects/${slug}.mdx`);
+        return {
+            title: `${metadata.title} | Christopher Wenzlick`,
+            description: metadata.description,
+            openGraph: {
+                title: metadata.title,
+                description: metadata.description,
+                type: "article",
+            },
+        };
+    } catch {
+        return { title: "Project | Christopher Wenzlick" };
+    }
+}
 
 export async function generateStaticParams() {
     return getAllProjectSlugs().map((slug) => ({ slug }));

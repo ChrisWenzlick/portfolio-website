@@ -37,6 +37,14 @@ export const metadata: Metadata = {
     url: "https://chriswenzlick.com",
     siteName: "Christopher Wenzlick",
     type: "website",
+    images: [
+      {
+        url: "/images/chris-headshot.jpg",
+        width: 800,
+        height: 800,
+        alt: "Christopher Wenzlick",
+      },
+    ],
   },
   twitter: {
     card: "summary",

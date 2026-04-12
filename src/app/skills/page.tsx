@@ -1,5 +1,15 @@
-
+import { Metadata } from "next";
 import { skills } from "@/content/skills"
+
+export const metadata: Metadata = {
+  title: "Skills | Christopher Wenzlick",
+  description: "Technologies and tools I've worked with across backend, frontend, database, and cloud environments.",
+  openGraph: {
+    title: "Skills | Christopher Wenzlick",
+    description: "Technologies and tools I've worked with across backend, frontend, database, and cloud environments.",
+    type: "website",
+  },
+};
 import { SkillBadge } from "components/ui/SkillBadge"
 
 export default function SkillsPage() {

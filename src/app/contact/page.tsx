@@ -1,3 +1,15 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contact | Christopher Wenzlick",
+    description: "Get in touch to discuss opportunities, collaborations, or questions about my work.",
+    openGraph: {
+        title: "Contact | Christopher Wenzlick",
+        description: "Get in touch to discuss opportunities, collaborations, or questions about my work.",
+        type: "website",
+    },
+};
+
 export default function ContactPage() {
     return (
       <main className="container mx-auto px-6 py-16 space-y-16">
@@ -35,7 +47,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              github.com/placeholder
+              github.com/ChrisWenzlick
             </a>
           </div>
   
@@ -49,7 +61,7 @@ export default function ContactPage() {
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              linkedin.com/in/placeholder
+              linkedin.com/in/christopherwenzlick
             </a>
           </div>
         </section>

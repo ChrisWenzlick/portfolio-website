@@ -11,6 +11,7 @@ export default function Home() {
         subtitle="I build maintainable software systems with clean architecture and modern tooling."
         description="Specialized in full-stack development, cloud infrastructure, and healthcare data integration. Experienced with C#, .NET, React, SQL Server, HL7, and Epic/Cerner interoperability."
         image="/images/chris-headshot.jpg"
+        imageAlt="Christopher Wenzlick"
         ctas={[
           { label: "View All Projects", href: "/projects", variant: "primary" },
           { label: "Contact", href: "/contact", variant: "outline" },
