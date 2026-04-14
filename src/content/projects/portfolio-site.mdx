@@ -1,11 +1,11 @@
 export const metadata = {
-  title: "Developer Portfolio Website",
-  description: "A clean, SEO-friendly portfolio built with Next.js, Tailwind, TypeScript, and MDX.",
+  title: "Portfolio Website V1",
+  description: "A simple, SEO-friendly portfolio built with Next.js, Tailwind, Typescript, and MDX.",
   label: "",
   featured: true,
   repo: "https://github.com/ChrisWenzlick/portfolio-website",
   live: "https://chriswenzlick.com",
-  skillSlugs: ["nextjs", "tailwind", "typescript"],
+  skillSlugs: ["nextjs", "tailwind", "typescript", "markdown", "mdx"],
   images: [
     { src: "/images/portfolio-website/portfolio-website-v1.jpg", alt: "Portfolio site version 1.0 homepage" },
   ],
@@ -15,44 +15,157 @@ export const metadata = {
 
 ## Overview
 
-This project is my personal developer portfolio, designed to highlight
-real-world experience, maintainability, and performance.
+<p>This is version 1.0 of my portfolio site, designed to highlight my real-world experience, showcase my technical skill set, and provide me with a chance to try out Next.js and Tailwind CSS.</p>
 
-## Key Features
+<p>My goal from the start was to quickly set up a project hosting area that I could use to showcase my work moving forward. I also wanted an opportunity to learn and practice some in-demand technologies.</p>
 
-- Static generation with Next.js App Router
-- Semantic theming with CSS variables
-- Reusable component architecture
-- Content-driven project pages using MDX
+<p>This project was a solo build, though I did also use LLMs to speed things up a bit and get experience working with AI tooling. The initial commit was created in September of 2025, but work didn't really get underway until November of that same year. It took about five months of consistent work — where I could find the time — before it got to a point that I felt comfortable hosting it. In April of 2026, the project went live and I began soliciting feedback from colleagues on what I might improve for the next version.</p>
 
-## Technical Decisions
+---
 
-I chose MDX so I could mix rich Markdown content with React components
-when needed (code blocks, callouts, media, etc.).
+## Motivation & Goals
 
-## What I’d Improve Next
+<p>Near the end of 2025, I found myself frustrated at my lack of enthusiasm for my professional software engineering work. My day-to-day consisted of small maintenance and upkeep tasks, with no budget for proper refactoring, cleanup, and architectural improvements. I missed the days when I was constantly tinkering with code and building interesting new things, and wanted to recapture that passion I used to have.</p>
 
-- Add analytics
-- Add automated Lighthouse checks
-- Expand content with case-study metrics
+<p>To that end, I decided to start off with something simple: a portfolio site that would finally establish an online presence for myself. This would give me a space to show off whatever I worked on next, and it would also require me to learn some technologies that didn't fall within the purview of my day job.</p>
 
-<ArticleImage src="/images/portfolio-website/portfolio-website-v1.jpg" />
+### What I set out to accomplish
+
+- **Establish Online Presence** — First and foremost, I wanted to have a completed and deployed project hosting site that I could use to showcase my work.
+- **Learn New Technologies** — Being primarily back-end focused at my job, I wanted to expand into some commonly used front-end technologies I don't work with as often.
+- **Practice Working With LLMs** — AI is rapidly becoming an indispensable part of developer workflows, so I also wanted to get some practice using it in mine.
+- **Move Rapidly** — I wanted to quickly learn the new technologies I would be working with, build a website I could be proud of, and deploy it to production in a relatively short time frame.
+
+---
+
+## Technical Design
+
 ### Architecture
 
-<p>The app is built using a layered architecture...</p>
-<p>Test paragraphs</p>
+<p>This is a fully static Next.js 15 App Router site. It uses no database, no API routes, and no server-side logic at runtime. All content is file-based (MDX and TypeScript data files), and all pages are pre-rendered at build time. The content layer consists of the project MDX files, `skills.ts`, and `testimonials.ts`. The data access layer is primarily served by `projects.ts`, which reads the filesystem at build time, discovers MDX files, and dynamically imports their metadata.</p>
 
-<ArticleImage src="/images/portfolio-website/portfolio-website-v1.jpg" />
-### Architecture
+<p>The Next.js App Router provides page routing under the `src/app/` directory, covering five total routes. The home, skills, and contact pages are all statically rendered content, the projects page is dynamic to support search/filtering/pagination, and the project details page is generated server-side for each project and served as static content.</p>
 
-The app is built using a layered architecture...
+<p>Finally, the various components used throughout the site are stored in a component layer outside of `src/`, and the site generates SEO and metadata at build time.</p>
 
-## Test Section
-<p>This section is solely intended to test the functionality of
-paragraph spacing, document flow, and image display.</p>
-<p>This entire page is a placeholder and should be replaced
-prior to production deployment. At that point, real project
-write-ups will take its place.</p>
-<div>
-  <ArticleImage src="/images/portfolio-website/portfolio-website-v1.jpg" alt="" caption="test image of people in a crowd" />
-</div>
+### Tech Stack
+
+| Category             | Technology                                       | Reasoning                                                                                                                                                                                                                              |
+| -------------------- | ------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Framework**        | Next.js 15 (App Router)                          | Handles routing, image optimization, metadata, static generation, and SEO file generation in one tool — removing the need for separate libraries for each concern                                                                      |
+| **Front-End**        | React 19, Tailwind CSS v4, Embla Carousel, Geist | React for the component model; Tailwind v4 for utility-first styling with native CSS custom property tokens (no runtime CSS-in-JS cost); Embla for a lightweight headless carousel; Geist loaded via `next/font` for zero layout shift |
+| **UI Primitives**    | CVA, Radix UI Slot, clsx, tailwind-merge         | Headless/unstyled primitives keep full styling control in Tailwind while avoiding having to hand-roll variant logic and the `asChild` composition pattern from scratch                                                                 |
+| **Content**          | MDX + TypeScript data files                      | Project pages are `.mdx` files with typed `metadata` exports — adding a project means dropping one file, with no CMS, no admin UI, and no vendor dependency                                                                            |
+| **Tooling**          | TypeScript 5 (strict mode), ESLint               | Strict TypeScript catches mismatches between MDX metadata and the `ProjectMeta` type at build time rather than at runtime; `eslint-config-next` enforces accessibility and image best practices automatically                          |
+| **Build & Delivery** | Next.js static generation (SSG)                  | All pages except `/projects` pre-render at build time — no origin server required at runtime, no cold starts, and sub-100ms TTFB from a CDN                                                                                            |
+| **Hosting**          | Vercel                                           | Built by same team as Next.js, has native support with minimal configuration; free tier covers custom domain, HTTPS, high bandwidth, preview deployments                                                                               |
+
+### Key Technical Decisions
+
+**Using MDX as a CMS**
+
+<p>With MDX, adding a new project is as simple as dropping a `.mdx` file into the `src/content/projects/` directory. At the next build, it is picked up by the sitemap, filters, and featured lists. Using a database and/or proper CMS tool would make the project more future-proof — removing the need to rebuild the project for updated content, for example — but I wanted to keep things lean and fast for this iteration in order to go live as soon as possible. Also, this approach integrates nicely with my personal note-taking application of choice, Obsidian, so I can author content more conveniently and have it automatically stored in version control.</p>
+
+**Setting `dynamicParams = false` on the Project Detail Page**
+
+<p>Any slug not found in `generateStaticParams` returns a 404 error rather than a slow runtime render.</p>
+
+**Keeping the Projects Page Dynamic**
+
+<p>I wanted users visiting the site to be able to quickly search through projects based on skills and keywords, and to have paginated results for cleaner viewing. To accomplish this, the Project page needed to stay dynamic. Everything else is fully static.</p>
+
+**No External Data Dependencies at Runtime**
+
+<p>For performance, all data on the deployed site is baked in at build time and there are no outbound API calls. This may change for later versions of the site, but this simple first version is fine for my purposes until I have more projects to showcase.</p>
+
+---
+
+## Development Process
+
+### How I approached it
+
+<p>I've had a rough outline of how I wanted this site to look for some time now, so I used that as the initial design. Since speed and results were the targets for this project, I used LLMs to speed up my workflow and quickly turn that design into a prototype. Instead of spending weeks learning Next.js, TypeScript, and Tailwind CSS before I could have anything to show for it, I had ChatGPT walk me through scaffolding an initial project and getting all the boilerplate code in place. This allowed me to get something tangible to work with and provided me with examples to review and experiment with as I learned.</p>
+
+<p>The reasons I started with ChatGPT instead of something like Claude Code were the following:</p>
+
+- It was free to use, so I could experiment with it before committing to a purchase.
+- By using conversation threads instead of direct project integration, I forced a self-imposed limit on how much I could rely on the LLM and kept my learning goals in sight.
+- Because ChatGPT isn't as adept at complex code solutions, I had to regularly review the provided code samples for correctness and context. This further supported my goal of learning the new technologies.
+
+<p>Toward the end of the project, I switched to using Claude to review and clean up the code. It was especially helpful in quickly running pre-deployment checks to make sure everything was ready for production.</p>
+
+### Notable challenges
+
+<p>The biggest challenge I faced was fighting against ChatGPT. It regularly walked back code decisions, forgot important context I provided, and would frequently run away with itself in suggesting new and unnecessary features. Pushing back against these behaviors helped keep me sharp and reinforced my learning goals as I originally intended, but it was far more verbose and "chatty" than I had anticipated. Switching to Claude near the end of the project helped me to perform a sanity check on a lot of my revisions and look for anything I might have missed.</p>
+
+<p>Another challenge I encountered was more on a meta level than a technical one. At the beginning of March of 2026, I was laid off from my job as part of an acquisition. This put some very real time pressure on my work, as my focus was being split between this project, family obligations, and searching for a new job. It also gave more weight to the project itself, as having an active portfolio site up and running would help my chances of being contacted about work opportunities.</p>
+
+<p>Finally, I found that I had some difficulties in adapting to the new technologies I was working with, particularly Tailwind. In terms of syntax and actual implementation, there wasn't much difficulty. I did my research, referred to examples generated by ChatGPT, and gained enough context to be able to competently write the necessary code. However, I struggled to wrap my head around the softer aspects like how style rules should be organized. Coming from working with raw CSS, I was accustomed to a top–down approach to organizing style rules. With Tailwind, most of the appeal comes from being able to write the style rules in place, exactly where they're used. This transition in thinking took some time, but I found it very convenient for when I had to debug visual issues in the website.</p>
+
+### What I learned
+
+- **LLM Workflows** — After experiencing some of the nuanced differences between ChatGPT, Claude, and Claude Code, I have a much better understanding of how to effectively use these tools without letting them get in the way or becoming overly reliant on them.
+- **Next.js, Tailwind, React Components** — All of these were easier to pick up than I expected, especially when I was able to bounce ideas off of my LLM tools. I have a better understanding of them now and will be able to better design around them for future projects.
+- **System Design** — In my desire to move quickly, I neglected to spend enough time in the design phase refining my site's page and data structures. This came back to bite me later and required some major refactors, but gave me experience in dealing with changing project requirements and designing more robust data structures.
+
+---
+
+## Results
+
+### Did I hit my goals?
+
+| Goal                          | Outcome                                                                                                                                                                                                                                                                                          |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Establish Online Presence** | **Success** — The site is live and I can begin hosting projects on it.                                                                                                                                                                                                                           |
+| **Learn New Technologies**    | **Success** — I gained experience using Next.js, Tailwind, React Components, and TypeScript in a real-world application.                                                                                                                                                                         |
+| **Practice Using LLMs**       | **Success** — I used multiple LLMs and tried various approaches to integrating them into my workflow, learning some of the pros and cons of each approach.                                                                                                                                       |
+| **Get to Production Quickly** | **Partial Success** — While not as fast as I had hoped, going from first commit to deployed site in less than six months is a huge accomplishment. Next time, I'll spend more time in the design and planning phase to remove some of the roadblocks and setbacks I encountered in this project. |
+
+### Metrics / outcomes
+
+#### Lighthouse scores
+
+| Page               | Performance | Accessibility | Best Practices | SEO |
+| ------------------ | ----------- | ------------- | -------------- | --- |
+| `/`                | 97          | 91            | 100            | 100 |
+| `/projects`        | 98          | 96            | 100            | 100 |
+| `/projects/[slug]` | 98          | 94            | 100            | 100 |
+| `/skills`          | 99          | 95            | 100            | 100 |
+| `/contact`         | 98          | 95            | 100            | 100 |
+
+<p>All five pages score 90+ across every category, with perfect 100s on Best Practices and SEO site-wide.</p>
+
+#### User feedback
+
+<p>Once some users have visited the site and given me feedback, I will update this section with findings and potential improvements.</p>
+
+---
+
+## Postmortem
+
+### What worked well
+
+<p>Using LLMs in my workflow, albeit in a detached manner, was an extravagant boost to my productivity. I was able to rapidly scaffold code, delve into difficult new concepts, fill in informational gaps, and offload areas of work that were not part of my skill set or intended goals for this project (such as setting up bot/LLM indexing support). This trivialized a lot of the more tedious and time-consuming work, allowing me to focus on learning the technologies themselves without sacrificing development pace.</p>
+
+### What I'd do differently
+
+<p>If I had to start this project over, I would spend much more time in the design and planning phase. There were many instances of poor data design, redundant components, and wasted development time that could have been avoided if I'd gone into more depth when it came to the design.</p>
+
+<p>Now that I've had some experience with LLMs, I would also probably run with Claude Code from the start. Having the self-imposed limitations helped me to learn the technologies, but there was still a lot of noise I had to sift through from ChatGPT in order to do so.</p>
+
+### If I continued this project
+
+<p>I'm sure that I will revisit this project at some point in the future, to redesign the site and add new features or underlying functionality as time goes on. Some potential work items I might consider for that rework include:</p>
+
+- **Reading time estimate** — adding an estimated read time to the top of each project page, calculated from the MDX word count
+- **Related projects** — connecting projects with cross-links based on shared `skillSlugs`
+- **Resumé download link** — a direct PDF link
+- **Components directory cleanup** — move `components/` into `src/`, remove `baseUrl` workaround in `tsconfig.json`, and better organize component directories
+- **Type the MDX `metadata` export** — define a shared `ProjectFrontMatter` type to use with the MDX import to catch missing or malformed fields at build time
+- **Tech debt cleanup** — use webpack standard config type instead of manually written one; move `getAllProjects()` from module scope to page function for maintainability and correctness
+
+---
+
+## Closing Thoughts
+
+<p>This project means a lot to me. I've wanted to create a portfolio site for years, but just haven't dedicated the time to it until now. Having it live and viewable, somewhere I can share it with people I know, is a major milestone for me. More than that, this is the first project I've worked on in a long time which was done solely in the pursuit of learning and creative expression. I really enjoyed getting back to that and rediscovering the passion I have for coding that led me to this career in the first place.</p>
