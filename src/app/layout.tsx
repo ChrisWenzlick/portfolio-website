@@ -54,7 +54,6 @@ export const metadata: Metadata = {
     description: "Full stack and cloud infrastructure engineer specializing in healthcare data integration.",
   },
   metadataBase: new URL("https://chriswenzlick.com"),
-  icons: { icon: "/favicon.ico" },
 };
 
 export default function RootLayout({
