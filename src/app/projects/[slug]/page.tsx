@@ -1,79 +1,96 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import path from "path";
-import fs from "fs";
 import Image from "next/image";
+import { getAllProjectSlugs } from "@/lib/projects";
 import ProjectMeta from "components/layout/ProjectMeta";
 import { MDXComponents } from "components/util/MDXComponents";
 import Carousel from "components/ui/Carousel";
 
-interface ProjectPageProps {
-    params: { slug: string };
-}
-
 export const dynamicParams = false;
 
-export async function generateStaticParams() {
-    const dir = path.join(process.cwd(), "src/content/projects");
-    const files = await fs.promises.readdir(dir);
-
-    return files
-        .filter((f) => f.endsWith(".mdx"))
-        .map((f) => ({ slug: f.replace(/\.mdx$/, "") }));
+export async function generateMetadata({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+    const { slug } = await params;
+    try {
+        const { metadata } = await import(`@/content/projects/${slug}.mdx`);
+        return {
+            title: `${metadata.title} | Christopher Wenzlick`,
+            description: metadata.description,
+            openGraph: {
+                title: metadata.title,
+                description: metadata.description,
+                type: "article",
+            },
+        };
+    } catch {
+        return { title: "Project | Christopher Wenzlick" };
+    }
 }
 
-export default async function ProjectPage({ params }: ProjectPageProps) {
+export async function generateStaticParams() {
+    return getAllProjectSlugs().map((slug) => ({ slug }));
+}
+
+export default async function ProjectPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
     const { slug } = await params;
 
     try {
-        const importedData = await import(`@/content/projects/${slug}.mdx`);
-        const ProjectMdx = importedData.default;
-        const metadata = importedData.metadata;
+        const { default: ProjectMdx, metadata } = await import(
+            `@/content/projects/${slug}.mdx`
+        );
 
-        // images?: { src: string; alt?: string }[]
-        const images = metadata.images ?? [];
+        const images: { src: string; alt?: string }[] = metadata.images ?? [];
 
         return (
             <article className="mx-auto max-w-10/12 px-4 py-12">
-                {/* Header */}
-                <header className="mb-10 space-y-4 text-(--color-primary-contrast) flex flex-col items-center">
+                <header className="mb-10 space-y-4 flex flex-col items-center">
                     <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-center">
                         {metadata.title}
                     </h1>
-                    {metadata.summary && (
+
+                    {metadata.description && (
                         <p className="max-w-2xl text-lg text-(--color-text-secondary) text-center">
-                            {metadata.summary}
+                            {metadata.description}
                         </p>
                     )}
 
                     <ProjectMeta
-                        technologies={metadata.technologies}
+                        skillSlugs={metadata.skillSlugs}
                         repo={metadata.repo}
                         live={metadata.live}
                     />
                 </header>
 
-                {/* Image Gallery */}
                 {images.length > 0 && (
                     <div className="flex justify-center items-center min-h-40 mb-10">
                         <Carousel>
-                            {images.map((image: { src: string; alt: string; }) => (
+                            {images.map((image) => (
                                 <div
                                     key={image.src}
-                                    className="relative w-full h-64 md:h-80"
+                                    className="relative w-full max-h-96"
                                 >
                                     <Image
                                         src={image.src}
-                                        alt={image.alt}
-                                        fill
-                                        className="object-contain"
+                                        alt={image.alt ?? ""}
+                                        width={1200}
+                                        height={800}
+                                        className="w-full h-auto max-h-96 object-contain"
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                        priority
                                     />
                                 </div>
                             ))}
                         </Carousel>
                     </div>
                 )}
-                
-                {/* Main Content */}
+
                 <div className="prose prose-neutral dark:prose-invert max-w-none space-y-6">
                     <ProjectMdx components={MDXComponents} />
                 </div>

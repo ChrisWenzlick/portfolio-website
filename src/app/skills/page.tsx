@@ -1,7 +1,16 @@
+import { Metadata } from "next";
+import { skills } from "@/content/skills"
 
-import { skills } from "@/content"
-import { Icon } from "components/icons/Icon"
-import Link from "next/link"
+export const metadata: Metadata = {
+  title: "Skills | Christopher Wenzlick",
+  description: "Technologies and tools I've worked with across backend, frontend, database, and cloud environments.",
+  openGraph: {
+    title: "Skills | Christopher Wenzlick",
+    description: "Technologies and tools I've worked with across backend, frontend, database, and cloud environments.",
+    type: "website",
+  },
+};
+import { SkillBadge } from "components/ui/SkillBadge"
 
 export default function SkillsPage() {
   const categories = Array.from(
@@ -10,7 +19,7 @@ export default function SkillsPage() {
 
   return (
     <main className="container mx-auto px-6 py-16 space-y-16">
-      <header className="space-y-4 max-w-3xl text-center">
+      <header className="space-y-4 w-full text-center">
         <h1 className="text-4xl font-bold tracking-tight">
           Skills & Technologies
         </h1>
@@ -32,14 +41,11 @@ export default function SkillsPage() {
               {skills
                 .filter((skill) => skill.category === category)
                 .map((skill) => (
-                  <Link
+                  <SkillBadge
                     key={skill.slug}
+                    name={skill.name}
                     href={`/projects?skills=${skill.slug}#projects-list`}
-                    className="inline-flex items-center gap-2 rounded-md border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
-                  >
-                    <Icon name={skill.iconName} />
-                    {skill.name}
-                  </Link>
+                  />
                 ))}
             </div>
           </div>

@@ -10,6 +10,7 @@ export interface HeroProps {
     subtitle?: string;
     description?: string;
     image?: string;
+    imageAlt?: string;
     ctas?: {
         label: string;
         href: string;
@@ -23,6 +24,7 @@ export default function Hero({
     subtitle,
     description,
     image,
+    imageAlt = "",
     ctas = [],
     className,
 }: HeroProps) {
@@ -67,10 +69,11 @@ export default function Hero({
                         >
                             <Image
                                 src={image}
-                                alt=""
+                                alt={imageAlt}
                                 fill
                                 className="object-cover"
                                 priority
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                         </Card>
                     </div>

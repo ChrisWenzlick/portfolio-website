@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import { Skill } from "@/content/skills";
+import Button from "components/ui/Button";
 
 interface Props {
   currentPage: number;
   totalPages: number;
   search: string;
-  selectedSkills: string[];
+  selectedSkills: Skill[];
 }
 
 export default function ProjectPagination({
@@ -19,10 +20,11 @@ export default function ProjectPagination({
 
   function buildUrl(page: number) {
     const params = new URLSearchParams();
+    const selectedSlugs = selectedSkills.map(skill => skill.slug);
 
     if (search) params.set("search", search);
-    if (selectedSkills.length > 0)
-      params.set("skills", selectedSkills.join(","));
+    if (selectedSlugs.length > 0)
+      params.set("skills", selectedSlugs.join(","));
 
     params.set("page", page.toString());
 
@@ -32,12 +34,9 @@ export default function ProjectPagination({
   return (
     <div className="flex justify-center gap-4">
       {currentPage > 1 && (
-        <Link
-          href={buildUrl(currentPage - 1)}
-          className="px-4 py-2 border rounded-md"
-        >
+        <Button href={`${buildUrl(currentPage - 1)}#projects-list`}>
           Previous
-        </Link>
+        </Button>
       )}
 
       <span className="px-4 py-2 text-sm text-muted-foreground">
@@ -45,12 +44,9 @@ export default function ProjectPagination({
       </span>
 
       {currentPage < totalPages && (
-        <Link
-          href={buildUrl(currentPage + 1)}
-          className="px-4 py-2 border rounded-md"
-        >
+        <Button href={`${buildUrl(currentPage + 1)}#projects-list`}>
           Next
-        </Link>
+        </Button>
       )}
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 
@@ -38,41 +37,6 @@ export default function Card({
     )}
     {...props}
     />
-  );
-}
-
-export function CardMedia({
-  src,
-  label,
-  alt,
-}: {
-  src?: string;
-  label?: string;
-  alt?: string;
-}) {
-  return (
-    <div className="relative w-full aspect-video overflow-hidden">
-      {src && (
-        <>
-          <Image
-            src={src}
-            alt={alt ?? label ?? ""}
-            fill
-            className="object-cover"
-            sizes="(max-width: 768px) 100vw,
-                   (max-width: 1200px) 50vw,
-                   32vw"
-          />
-
-          {/* Fade to dark at the bottom */}
-          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
-        </>
-      )}
-
-      {label && (
-        <span className="absolute top-3 left-3 py-1 px-2 rounded-md bg-black/70 text-white text-xs">{label}</span>
-      )}
-    </div>
   );
 }
 

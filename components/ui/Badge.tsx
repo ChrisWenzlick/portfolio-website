@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import { cn } from "@/lib/utils";
 
 type BadgeVariant =
@@ -19,14 +20,17 @@ type BadgeSize =
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
     variant?: BadgeVariant;
     size?: BadgeSize;
+    asChild?: boolean;
 }
 
 export default function Badge({
     className,
     variant = "default",
     size = "sm",
+    asChild = false,
     ...props
 }: BadgeProps) {
+    const Comp = asChild ? Slot : "span";
     const baseStyles = 'inline-flex items-center rounded-md font-semibold leading-4 whitespace-nowrap';
 
     const variantStyles = {
@@ -48,7 +52,7 @@ export default function Badge({
     const styleClasses = `${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]}`;
 
     return (
-        <span
+        <Comp
             className={cn(styleClasses, className)}
             {...props}
         />

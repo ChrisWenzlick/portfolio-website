@@ -30,7 +30,7 @@ export default function Footer() {
                         </a>
 
                         <a
-                            href="mailto:placeholder@fakemail.com"
+                            href="mailto:contact@chriswenzlick.com"
                             className="text-(--color-text-muted) hover:text-(--color-text) duration-200 ease-in-out flex items-center justify-center rounded-(--radius-lg) h-full cursor-pointer px-4 text-sm transition-colors"
                         >
                             Email

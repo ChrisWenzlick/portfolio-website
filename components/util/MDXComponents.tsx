@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { ComponentPropsWithoutRef } from "react";
 
 interface ArticleImageProps {
   src: string;
@@ -9,6 +10,36 @@ interface ArticleImageProps {
 }
 
 export const MDXComponents = {
+  // Lists
+  ul: ({ children }: ComponentPropsWithoutRef<"ul">) => (
+    <ul className="list-disc pl-6 my-4 space-y-1">{children}</ul>
+  ),
+  ol: ({ children }: ComponentPropsWithoutRef<"ol">) => (
+    <ol className="list-decimal pl-6 my-4 space-y-1">{children}</ol>
+  ),
+  li: ({ children }: ComponentPropsWithoutRef<"li">) => (
+    <li className="leading-relaxed">{children}</li>
+  ),
+
+  // Tables
+  table: ({ children }: ComponentPropsWithoutRef<"table">) => (
+    <div className="my-6 w-full overflow-x-auto rounded-lg border border-(--color-border)">
+      <table className="w-full border-collapse text-sm">{children}</table>
+    </div>
+  ),
+  thead: ({ children }: ComponentPropsWithoutRef<"thead">) => (
+    <thead className="bg-(--color-surface) border-b border-(--color-border)">{children}</thead>
+  ),
+  tr: ({ children }: ComponentPropsWithoutRef<"tr">) => (
+    <tr className="border-b border-(--color-border) last:border-0">{children}</tr>
+  ),
+  th: ({ children }: ComponentPropsWithoutRef<"th">) => (
+    <th className="px-4 py-2.5 text-left font-semibold">{children}</th>
+  ),
+  td: ({ children }: ComponentPropsWithoutRef<"td">) => (
+    <td className="px-4 py-2.5">{children}</td>
+  ),
+
   ArticleImage: ({
     src,
     alt = "",
@@ -34,6 +65,7 @@ export const MDXComponents = {
             alt={alt}
             fill
             className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
         </div>
         {caption && (

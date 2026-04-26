@@ -1,0 +1,13 @@
+# Christopher Wenzlick
+
+> Full Stack & Cloud Infrastructure Engineer specializing in healthcare data integration, C#/.NET, React, and Azure DevOps.
+
+## Pages
+- /: Portfolio home with bio, featured projects, and skills overview
+- /projects: Full project list with search and skill filtering
+- /skills: Technologies organized by category
+- /contact: Contact links (email, GitHub, LinkedIn)
+
+## Links
+- GitHub: https://github.com/ChrisWenzlick
+- LinkedIn: https://linkedin.com/in/christopherwenzlick

@@ -1,3 +1,15 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contact | Christopher Wenzlick",
+    description: "Get in touch to discuss opportunities, collaborations, or questions about my work.",
+    openGraph: {
+        title: "Contact | Christopher Wenzlick",
+        description: "Get in touch to discuss opportunities, collaborations, or questions about my work.",
+        type: "website",
+    },
+};
+
 export default function ContactPage() {
     return (
       <main className="container mx-auto px-6 py-16 space-y-16">
@@ -7,7 +19,7 @@ export default function ContactPage() {
           </h1>
   
           <p className="text-muted-foreground text-center">
-            If you’d like to discuss opportunities, collaborations, or have
+            If you&apos;d like to discuss opportunities, collaborations, or have
             questions about my work, feel free to reach out.
           </p>
         </header>
@@ -18,10 +30,10 @@ export default function ContactPage() {
               Email
             </h2>
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:contact@chriswenzlick.com"
               className="text-lg font-medium hover:underline"
             >
-              your.email@example.com
+              contact@chriswenzlick.com
             </a>
           </div>
   
@@ -30,12 +42,12 @@ export default function ContactPage() {
               GitHub
             </h2>
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/ChrisWenzlick"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              github.com/yourusername
+              github.com/ChrisWenzlick
             </a>
           </div>
   
@@ -44,12 +56,12 @@ export default function ContactPage() {
               LinkedIn
             </h2>
             <a
-              href="https://linkedin.com/in/yourusername"
+              href="https://linkedin.com/in/christopherwenzlick"
               target="_blank"
               rel="noopener noreferrer"
               className="text-lg font-medium hover:underline"
             >
-              linkedin.com/in/yourusername
+              linkedin.com/in/christopherwenzlick
             </a>
           </div>
         </section>

@@ -1,7 +1,8 @@
-import Link from "next/link";
 import ProjectCard from "../ui/ProjectCard";
-import { Project, projects } from "@/content";
+import { ProjectMeta, getAllProjects } from "@/lib/projects";
 import Button from "components/ui/Button";
+
+const projects = await getAllProjects();
 
 export function ProjectsSection() {
     return (
@@ -13,20 +14,11 @@ export function ProjectsSection() {
                     .slice(0, 6)
                     .map((project) =>
                 (
-                    <Link
+                    <ProjectCard
                         key={project.slug}
-                        href={`/projects/${project.slug}`}
+                        project={project}
                         className="block h-full"
-                    >
-                        <ProjectCard
-                            key={project.slug}
-                            image={project.image}
-                            label={project.label}
-                            title={project.title}
-                            description={project.description}
-                            skills={project.skills}
-                        />
-                    </Link>
+                    />
                 ))}
             </div>
             <Button>
@@ -36,7 +28,7 @@ export function ProjectsSection() {
     );
 }
 
-function CompareByFeaturedAndUpdatedDate(a: Project, b: Project)
+function CompareByFeaturedAndUpdatedDate(a: ProjectMeta, b: ProjectMeta)
 {
     if(b.featured != a.featured)
         return Number(b.featured) - Number(a.featured);
