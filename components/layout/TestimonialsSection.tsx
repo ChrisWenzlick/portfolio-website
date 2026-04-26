@@ -24,7 +24,7 @@ function QuoteBody({ text }: { text: string }) {
 export default function TestimonialsSection() {
     return (
         <section>
-            <h2>What People Say</h2>
+            <h2>Testimonials</h2>
             <p className="mt-2 max-w-2xl text-(--color-text-muted)">
                 A few words from people I&apos;ve worked with across different teams and projects.
             </p>
