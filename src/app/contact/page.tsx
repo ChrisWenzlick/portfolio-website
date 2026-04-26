@@ -30,10 +30,10 @@ export default function ContactPage() {
               Email
             </h2>
             <a
-              href="mailto:placeholder@fakemail.com"
+              href="mailto:contact@chriswenzlick.com"
               className="text-lg font-medium hover:underline"
             >
-              your.email@placeholder.com
+              contact@chriswenzlick.com
             </a>
           </div>
   

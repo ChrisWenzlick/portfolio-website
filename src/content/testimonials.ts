@@ -51,4 +51,27 @@ export const testimonials: Testimonial[] = [
     role: "Founder",
     company: "Fierce Guppy Game Labs",
   },
+  {
+    id: "ben-howard",
+    quote:
+      `I had the pleasure of working with Chris at 
+      Bencin Studios, where he was a standout member 
+      of our team. What impressed me most was his 
+      fearlessness; Chris was always willing to step 
+      outside his comfort zone to tackle new 
+      technologies or unfamiliar challenges if it 
+      meant helping the company succeed.
+
+      He is exceptionally well-organized and brings 
+      a relentless 'how can we' attitude to every 
+      project. Beyond his technical skills, Chris is 
+      a natural with people - he was great with our 
+      clients and a highly respected, collaborative 
+      peer to everyone on the team. I cannot 
+      recommend him highly enough for any 
+      forward-thinking engineering team.`,
+    author: "Ben Howard",
+    role: "CEO",
+    company: "Fierce Guppy Game Labs",
+  },
 ];
