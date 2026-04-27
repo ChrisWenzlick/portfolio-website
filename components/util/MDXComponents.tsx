@@ -1,5 +1,6 @@
 import Image from "next/image";
 import type { ComponentPropsWithoutRef } from "react";
+import { ResponsiveTable } from "components/ui/ResponsiveTable";
 
 interface ArticleImageProps {
   src: string;
@@ -23,9 +24,7 @@ export const MDXComponents = {
 
   // Tables
   table: ({ children }: ComponentPropsWithoutRef<"table">) => (
-    <div className="my-6 w-full overflow-x-auto rounded-lg border border-(--color-border)">
-      <table className="w-full border-collapse text-sm">{children}</table>
-    </div>
+    <ResponsiveTable>{children}</ResponsiveTable>
   ),
   thead: ({ children }: ComponentPropsWithoutRef<"thead">) => (
     <thead className="bg-(--color-surface) border-b border-(--color-border)">{children}</thead>
