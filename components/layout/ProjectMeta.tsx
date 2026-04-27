@@ -13,7 +13,7 @@ export default function ProjectMeta({ skillSlugs, repo, live }: ProjectMetaProps
 
     return (
         <div className="flex flex-col flex-wrap items-center gap-3">
-            <div className="flex gap-2">
+            <div className="flex flex-wrap justify-center gap-2">
                 {skillSlugs && skillSlugs.length > 0 && (
                     skillSlugs.map((slug) => (
                         <SkillBadge
